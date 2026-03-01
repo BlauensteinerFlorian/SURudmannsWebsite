@@ -2,9 +2,7 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 /**
  * Fetch data from Strapi API
- * @param {string} endpoint - API endpoint (e.g., '/api/players')
- * @param {object} options - Fetch options
- * @returns {Promise<object>} - Parsed JSON response
+ * Handles both Strapi 4 (attributes) and Strapi 5 (flat) format
  */
 export async function fetchAPI(endpoint, options = {}) {
   const url = `${STRAPI_URL}${endpoint}`
@@ -62,7 +60,7 @@ export async function getUpcomingGames() {
  * Get all news
  */
 export async function getNews() {
-  return fetchAPI('/api/news?sort=publishedAt:desc&populate=*')
+  return fetchAPI('/api/articles?sort=publishedAt:desc&populate=*')
 }
 
 /**
@@ -77,6 +75,31 @@ export async function getSponsors() {
  */
 export async function getTeamMembers() {
   return fetchAPI('/api/team-members?populate=*')
+}
+
+/**
+ * Helper to get attributes from either Strapi 4 or 5 format
+ */
+export function getAttributes(item) {
+  // Strapi 5: flat structure, Strapi 4: nested under attributes
+  return item.attributes || item
+}
+
+/**
+ * Get image URL from item
+ */
+export function getImageUrl(item) {
+  const attrs = getAttributes(item)
+  if (attrs.photo?.url) {
+    return `${STRAPI_URL}${attrs.photo.url}`
+  }
+  if (attrs.image?.url) {
+    return `${STRAPI_URL}${attrs.image.url}`
+  }
+  if (attrs.logo?.url) {
+    return `${STRAPI_URL}${attrs.logo.url}`
+  }
+  return null
 }
 
 export { STRAPI_URL }
