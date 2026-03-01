@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
               <li><Link href="/spielplan" className="hover:text-[#da8d43]">Spielplan</Link></li>
               <li><Link href="/news" className="hover:text-[#da8d43]">News</Link></li>
               <li><Link href="/sponsoren" className="hover:text-[#da8d43]">Sponsoren</Link></li>
-              <li><Link href="/vorstand" className="hover:text-[#da8d43]">Vorstand</Link></li>
+              <li><Link href="/kontakt" className="hover:text-[#da8d43]">Kontakt</Link></li>
             </ul>
           </nav>
         </header>
