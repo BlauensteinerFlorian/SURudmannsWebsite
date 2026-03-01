@@ -1,9 +1,16 @@
-module.exports = ({ env }) => ({
+export default ({ env }) => ({
   connection: {
-    client: 'better-sqlite3',
+    client: 'mysql',
     connection: {
-      filename: env('DATABASE_FILENAME', '.tmp/data.db'),
+      host: env('DATABASE_HOST', '127.0.0.1'),
+      port: env.int('DATABASE_PORT', 3306),
+      database: env('DATABASE_NAME', 'surudmanns'),
+      user: env('DATABASE_USERNAME', 'strapi'),
+      password: env('DATABASE_PASSWORD', 'strapipass'),
     },
-    useNullAsDefault: true,
+    pool: {
+      min: 0,
+      max: 5,
+    },
   },
 })
