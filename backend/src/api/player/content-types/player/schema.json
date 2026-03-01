@@ -4,8 +4,7 @@
   "info": {
     "singularName": "player",
     "pluralName": "players",
-    "displayName": "Spieler",
-    "description": "Spieler des Vereins"
+    "displayName": "player"
   },
   "options": {
     "draftAndPublish": true
@@ -13,8 +12,7 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "number": {
       "type": "integer"
@@ -22,13 +20,13 @@
     "position": {
       "type": "string"
     },
-    "birthdate": {
-      "type": "date"
-    },
     "photo": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }

@@ -4,8 +4,7 @@
   "info": {
     "singularName": "sponsor",
     "pluralName": "sponsors",
-    "displayName": "Sponsoren",
-    "description": "Sponsoren des Vereins"
+    "displayName": "sponsor"
   },
   "options": {
     "draftAndPublish": true
@@ -19,14 +18,23 @@
     "logo": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "category": {
       "type": "enumeration",
-      "enum": ["Hauptsponsor", "Premium", "Standard", "Sponsor"]
+      "enum": [
+        "Hauptsponsor",
+        "Premium",
+        "Standard"
+      ]
     },
     "website": {
-      "type": "string"
+      "type": "text"
     }
   }
 }

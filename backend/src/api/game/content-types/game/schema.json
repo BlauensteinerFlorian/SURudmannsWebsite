@@ -4,8 +4,7 @@
   "info": {
     "singularName": "game",
     "pluralName": "games",
-    "displayName": "Spiele",
-    "description": "Spielplan und Ergebnisse"
+    "displayName": "game"
   },
   "options": {
     "draftAndPublish": true
@@ -13,12 +12,10 @@
   "pluginOptions": {},
   "attributes": {
     "date": {
-      "type": "datetime",
-      "required": true
+      "type": "datetime"
     },
     "opponent": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "location": {
       "type": "string"

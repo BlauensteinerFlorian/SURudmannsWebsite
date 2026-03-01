@@ -433,8 +433,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: 'articles';
   info: {
-    description: 'Nachrichten und Berichte';
-    displayName: 'Artikel';
+    displayName: 'article';
     pluralName: 'articles';
     singularName: 'article';
   };
@@ -442,11 +441,14 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    content: Schema.Attribute.RichText;
+    content: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images'>;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -454,7 +456,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -464,8 +466,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
 export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   collectionName: 'events';
   info: {
-    description: 'Veranstaltungen';
-    displayName: 'Events';
+    displayName: 'event';
     pluralName: 'events';
     singularName: 'event';
   };
@@ -493,8 +494,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
 export interface ApiGameGame extends Struct.CollectionTypeSchema {
   collectionName: 'games';
   info: {
-    description: 'Spielplan und Ergebnisse';
-    displayName: 'Spiele';
+    displayName: 'game';
     pluralName: 'games';
     singularName: 'game';
   };
@@ -505,13 +505,13 @@ export interface ApiGameGame extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    date: Schema.Attribute.DateTime;
     league: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::game.game'> &
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
-    opponent: Schema.Attribute.String & Schema.Attribute.Required;
+    opponent: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     result: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -523,8 +523,7 @@ export interface ApiGameGame extends Struct.CollectionTypeSchema {
 export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
   collectionName: 'players';
   info: {
-    description: 'Spieler des Vereins';
-    displayName: 'Spieler';
+    displayName: 'player';
     pluralName: 'players';
     singularName: 'player';
   };
@@ -532,7 +531,6 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    birthdate: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -542,9 +540,9 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
       'api::player.player'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String;
     number: Schema.Attribute.Integer;
-    photo: Schema.Attribute.Media<'images'>;
+    photo: Schema.Attribute.Media<'images' | 'files'>;
     position: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -556,8 +554,7 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
 export interface ApiSponsorSponsor extends Struct.CollectionTypeSchema {
   collectionName: 'sponsors';
   info: {
-    description: 'Sponsoren des Vereins';
-    displayName: 'Sponsoren';
+    displayName: 'sponsor';
     pluralName: 'sponsors';
     singularName: 'sponsor';
   };
@@ -566,7 +563,7 @@ export interface ApiSponsorSponsor extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.Enumeration<
-      ['Hauptsponsor', 'Premium', 'Standard', 'Sponsor']
+      ['Hauptsponsor', 'Premium', 'Standard']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -577,21 +574,20 @@ export interface ApiSponsorSponsor extends Struct.CollectionTypeSchema {
       'api::sponsor.sponsor'
     > &
       Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<'images'>;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    website: Schema.Attribute.String;
+    website: Schema.Attribute.Text;
   };
 }
 
 export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
   collectionName: 'team_members';
   info: {
-    description: 'Vorstand und Trainer';
-    displayName: 'Vorstand';
+    displayName: 'team-member';
     pluralName: 'team-members';
     singularName: 'team-member';
   };
@@ -612,7 +608,7 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     phone: Schema.Attribute.String;
-    photo: Schema.Attribute.Media<'images'>;
+    photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

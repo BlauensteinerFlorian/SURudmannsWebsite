@@ -4,8 +4,7 @@
   "info": {
     "singularName": "team-member",
     "pluralName": "team-members",
-    "displayName": "Vorstand",
-    "description": "Vorstand und Trainer"
+    "displayName": "team-member"
   },
   "options": {
     "draftAndPublish": true
@@ -22,7 +21,12 @@
     "photo": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "email": {
       "type": "email"
