@@ -37,10 +37,10 @@ export default async function Mannschaf() {
                 <img 
                   src={imgUrl}
                   alt={attrs.name}
-                  className="w-24 h-24  object-cover border-4 border-[#ff6600]"
+                  className="w-full h-48  object-cover border-4 border-[#ff6600]"
                 />
               ) : (
-                <div className="w-24 h-24  bg-gray-200 flex items-center justify-center border-4 border-gray-300">
+                <div className="w-full h-48  bg-gray-200 flex items-center justify-center border-4 border-gray-300">
                   <span className="text-3xl">⚽</span>
                 </div>
               )}
