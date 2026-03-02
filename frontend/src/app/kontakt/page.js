@@ -1,6 +1,6 @@
 export default function Kontakt() {
   return (
-    <div className="container mx-auto px-6 py-8">
+    <div className="container mx-auto px-6 max-w-5xl py-8">
       <h1 className="text-4xl font-bold text-center text-[#ff6600] mb-8">Kontakt</h1>
       
       <div className="max-w-2xl mx-auto">

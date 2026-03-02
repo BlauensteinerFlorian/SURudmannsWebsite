@@ -14,7 +14,7 @@ export default async function News() {
   const allNews = news.data || []
 
   return (
-    <div className="container mx-auto px-6 py-8">
+    <div className="container mx-auto px-6 max-w-5xl py-8">
       <h1 className="text-4xl font-bold text-center text-[#ff6600] mb-8">News</h1>
       
       {allNews.length === 0 ? (

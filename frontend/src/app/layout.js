@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen flex flex-col bg-[#0a0a0a]">
         {/* Header - Enhanced */}
         <header className="bg-gradient-to-r from-[#ff6600] to-[#ff8533] sticky top-0 z-50 shadow-lg">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-6 max-w-5xl">
             <div className="flex items-center justify-between h-20">
               {/* Logo + Brand */}
               <Link href="/" className="flex items-center gap-4 group">
@@ -138,7 +138,7 @@ export default function RootLayout({ children }) {
         
         {/* Footer */}
         <footer className="bg-gradient-to-r from-[#ff6600] to-[#ff8533] text-white py-12">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-6 max-w-5xl">
             <div className="grid md:grid-cols-3 gap-10">
               {/* Column 1: SPORTUNION RUDMANNS */}
               <div>
