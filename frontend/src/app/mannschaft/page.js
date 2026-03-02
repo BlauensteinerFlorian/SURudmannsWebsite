@@ -41,12 +41,17 @@ export default async function Mannschaf() {
 
   const allPlayers = players.data || []
 
-  // Get team image URL
+  // Get team image URL - handle both Strapi v4 and v5 formats
   let teamImageUrl = null
   if (teampicture) {
-    const img = teampicture.image?.data?.attributes || teampicture.image?.data
+    // Strapi 5: image.data.attributes.url
+    let img = teampicture.image?.data?.attributes || teampicture.image?.data
     if (img?.url) {
       teamImageUrl = `http://localhost:1337${img.url}`
+    }
+    // Also try direct url (Strapi 5 flat)
+    else if (teampicture.image?.url) {
+      teamImageUrl = `http://localhost:1337${teampicture.image.url}`
     }
   }
 
@@ -84,14 +89,18 @@ export default async function Mannschaf() {
       {/* Spieler */}
       <section className="py-8">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Unsere Spieler</h2>
+          <h1 className="text-3xl font-bold text-center mb-8">Unsere Spieler</h1>
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
             {allPlayers.map((player) => {
               const attrs = getAttributes(player)
               const imgUrl = getImageUrl(player)
               return (
-                <div key={player.id} className="text-center bg-white rounded-lg shadow-md border">
+                <div 
+                  key={player.id} 
+                  className="text-center bg-white rounded-lg shadow-md"
+                  style={{ boxShadow: '0 0 15px rgba(255, 102, 0, 0.15)' }}
+                >
                   {imgUrl ? (
                     <img 
                       src={imgUrl}
