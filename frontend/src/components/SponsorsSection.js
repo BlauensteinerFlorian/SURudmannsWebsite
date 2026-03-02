@@ -29,9 +29,10 @@ export default function SponsorsSection() {
           <div className="flex animate-scroll gap-16">
             {/* Double the sponsors for seamless loop */}
             {[...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => {
+              // Handle Strapi 5 flat format
               const attrs = sponsor.attributes || sponsor
-              const logo = attrs.logo?.data?.attributes || attrs.logo?.data
-              const logoUrl = logo ? `http://localhost:1337${logo.url}` : null
+              const logo = attrs.logo  // Direct object in Strapi 5
+              const logoUrl = logo?.url ? `http://localhost:1337${logo.url}` : null
               
               return (
                 <div 
