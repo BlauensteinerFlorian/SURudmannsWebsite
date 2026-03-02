@@ -32,41 +32,35 @@ export default function Pfingstturnier() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Hier würde normalerweise eine E-Mail gesendet werden
     console.log('Anmeldung:', formData)
     setSubmitted(true)
   }
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="bg-[#1a1a18] text-white py-20">
+      {/* Hero Section with Countdown */}
+      <section className="bg-[#1a1a18] text-white py-12">
         <div className="container mx-auto px-6 max-w-7xl text-center">
-          <h1 className="text-5xl font-bold text-[#ff6600] mb-4">Pfingstturnier 2026</h1>
-          <p className="text-xl">Sportunion Rudmanns</p>
-        </div>
-      </section>
-
-      {/* Countdown */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-6 max-w-7xl text-center">
-          <h2 className="text-3xl font-bold mb-8">Countdown bis zum Turnier</h2>
-          <div className="flex justify-center gap-4 md:gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md min-w-[100px]">
-              <p className="text-4xl font-bold text-[#ff6600]">{countdown.days}</p>
-              <p className="text-gray-600">Tage</p>
+          <h1 className="text-5xl font-bold text-[#ff6600] mb-2">Pfingstturnier 2026</h1>
+          <p className="text-xl mb-8">Sportunion Rudmanns</p>
+          
+          {/* Countdown inline */}
+          <div className="flex justify-center gap-4 md:gap-6 mt-8">
+            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[70px]">
+              <p className="text-3xl font-bold">{countdown.days}</p>
+              <p className="text-sm">Tage</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md min-w-[100px]">
-              <p className="text-4xl font-bold text-[#ff6600]">{countdown.hours}</p>
-              <p className="text-gray-600">Stunden</p>
+            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[70px]">
+              <p className="text-3xl font-bold">{countdown.hours}</p>
+              <p className="text-sm">Stunden</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md min-w-[100px]">
-              <p className="text-4xl font-bold text-[#ff6600]">{countdown.minutes}</p>
-              <p className="text-gray-600">Minuten</p>
+            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[70px]">
+              <p className="text-3xl font-bold">{countdown.minutes}</p>
+              <p className="text-sm">Min</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md min-w-[100px]">
-              <p className="text-4xl font-bold text-[#ff6600]">{countdown.seconds}</p>
-              <p className="text-gray-600">Sekunden</p>
+            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[70px]">
+              <p className="text-3xl font-bold">{countdown.seconds}</p>
+              <p className="text-sm">Sek</p>
             </div>
           </div>
         </div>
