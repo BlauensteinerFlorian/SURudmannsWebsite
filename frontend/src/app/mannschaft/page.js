@@ -99,7 +99,7 @@ export default async function Mannschaf() {
                 <div 
                   key={player.id} 
                   className="text-center bg-white rounded-lg shadow-md"
-                  style={{ boxShadow: "0 0 25px rgba(255, 102, 0, 0.3)"' }}
+                  style={{ boxShadow: "0 0 25px rgba(255, 102, 0, 0.3)" }}
                 >
                   {imgUrl ? (
                     <img 
