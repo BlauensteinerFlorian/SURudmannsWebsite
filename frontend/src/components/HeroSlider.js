@@ -84,17 +84,33 @@ export default function HeroSlider() {
     )
   }
 
-  const getSlideImage = (slide) => {
-    const attrs = getAttributes(slide)
-    // Strapi 5 format: image.data.attributes.url
-    const img = attrs.image?.data?.attributes || attrs.image?.data
-    return img?.url ? `http://localhost:1337${img.url}` : null
+function getAttributes(item) {
+  return item.attributes || item
+}
+
+function getSlideImage(slide) {
+  // Handle both Strapi v4 (with attributes) and v5 (flat)
+  const attrs = getAttributes(slide)
+  
+  // Strapi 5: direct image object with url
+  if (attrs.image?.url) {
+    return `http://localhost:1337${attrs.image.url}`
   }
+  
+  // Strapi v4 with populate: image.data.attributes.url
+  const img = attrs.image?.data?.attributes || attrs.image?.data
+  if (img?.url) {
+    return `http://localhost:1337${img.url}`
+  }
+  
+  return null
+}
 
   return (
     <section className="relative h-[500px] overflow-hidden">
       {slides.map((slide, index) => {
-        const attrs = getAttributes(slide)
+        // Handle both Strapi v4 and v5 format
+        const attrs = typeof slide.attributes !== 'undefined' ? slide.attributes : slide
         const bgImage = getSlideImage(slide)
         
         return (
@@ -102,7 +118,7 @@ export default function HeroSlider() {
             key={slide.id}
             className="absolute inset-0 transition-opacity duration-700"
             style={{
-              backgroundColor: bgImage ? 'transparent' : attrs.bgColor || '#1a1a18',
+              backgroundColor: bgImage ? '#1a1a18' : (attrs.bgColor || '#1a1a18'),
               opacity: index === currentSlide ? 1 : 0
             }}
           >
