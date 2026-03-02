@@ -45,7 +45,7 @@ export default async function Mannschaf() {
                 </div>
               )}
               <p className="font-bold text-lg">{attrs.name}</p>
-              <p className="text-[#ff6600] font-bold text-xl">#{attrs.number || '-'}</p>
+              <p className="text-[#ff6600] font-bold text-xl">{attrs.birthdate || '-'}</p>
             </div>
           )
         })}
