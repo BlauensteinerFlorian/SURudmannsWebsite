@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import HeroSlider from '@/components/HeroSlider'
 import { getPlayers, getUpcomingGames, getNews, getSponsors, getAttributes, getImageUrl } from '@/lib/api'
 
 export const revalidate = 60
@@ -25,13 +26,7 @@ export default async function Home() {
 
   return (
     <div>
-      <section className="bg-[#1a1a18] text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold text-[#da8d43] mb-4">SU Rudmanns</h1>
-          <p className="text-xl mb-2">Stift Zwettl</p>
-          <p className="text-lg text-gray-400">Gegründet 1988</p>
-        </div>
-      </section>
+      <HeroSlider />
 
       <section className="py-12 container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">

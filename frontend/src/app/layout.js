@@ -52,16 +52,26 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
               
-              {/* Map */}
+              {/* Map - Embedded */}
               <div>
                 <h3 className="font-bold mb-4">Standort</h3>
+                <iframe 
+                  width="100%" 
+                  height="150" 
+                  frameBorder="0" 
+                  scrolling="no" 
+                  marginHeight="0" 
+                  marginWidth="0" 
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=15.345,48.570,15.365,48.590&amp;layer=mapnik&amp;marker=48.5789,15.3521"
+                  style={{ border: 0, borderRadius: '8px' }}
+                ></iframe>
                 <a 
-                  href="https://www.openstreetmap.org/#map=15/48.5789/15.3521" 
+                  href="https://www.openstreetmap.org/?mlat=48.5789&amp;mlon=15.3521#map=15/48.5789/15.3521" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-black underline"
+                  className="text-sm hover:text-black underline"
                 >
-                  Birkenstadion Stift Zwettl
+                  Größere Karte ansehen
                 </a>
               </div>
               
