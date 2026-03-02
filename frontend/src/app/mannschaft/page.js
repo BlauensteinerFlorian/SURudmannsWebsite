@@ -12,16 +12,43 @@ function formatDate(dateStr) {
   return `${day}.${month}.${year}`
 }
 
+// Get team picture
+async function getTeamPicture() {
+  try {
+    const res = await fetch('http://localhost:1337/api/teampicture?populate=image', { cache: 'no-store' })
+    const data = await res.json()
+    return data.data || null
+  } catch (e) {
+    console.error('Error fetching teampicture:', e)
+    return null
+  }
+}
+
 export default async function Mannschaf() {
   let players = { data: [] }
+  let teampicture = null
   
   try {
-    players = await getPlayers()
+    const [playersData, tp] = await Promise.all([
+      getPlayers(),
+      getTeamPicture()
+    ])
+    players = playersData
+    teampicture = tp
   } catch (error) {
     console.error('Error:', error)
   }
 
   const allPlayers = players.data || []
+
+  // Get team image URL
+  let teamImageUrl = null
+  if (teampicture) {
+    const img = teampicture.image?.data?.attributes || teampicture.image?.data
+    if (img?.url) {
+      teamImageUrl = `http://localhost:1337${img.url}`
+    }
+  }
 
   // Sort by number
   allPlayers.sort((a, b) => {
@@ -33,34 +60,59 @@ export default async function Mannschaf() {
   })
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-8">Der Kader</h1>
-      
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
-        {allPlayers.map((player) => {
-          const attrs = getAttributes(player)
-          const imgUrl = getImageUrl(player)
-          return (
-            <div key={player.id} className="text-center bg-white rounded-lg shadow-md border">
-              {imgUrl ? (
-                <img 
-                  src={imgUrl}
-                  alt={attrs.name}
-                  className="w-full aspect-square object-cover rounded-t-lg"
-                />
-              ) : (
-                <div className="w-full aspect-square bg-gray-200 flex items-center justify-center rounded-t-lg">
-                  <span className="text-3xl">⚽</span>
+    <div>
+      {/* Überschrift */}
+      <section className="py-8">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-bold text-center">Unsere Mannschaft</h1>
+        </div>
+      </section>
+
+      {/* Team Bild */}
+      {teamImageUrl && (
+        <section className="py-4">
+          <div className="container mx-auto px-4">
+            <img 
+              src={teamImageUrl} 
+              alt="Mannschaftsbild" 
+              className="w-full max-h-[500px] object-contain rounded-lg"
+            />
+          </div>
+        </section>
+      )}
+
+      {/* Spieler */}
+      <section className="py-8">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">Unsere Spieler</h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+            {allPlayers.map((player) => {
+              const attrs = getAttributes(player)
+              const imgUrl = getImageUrl(player)
+              return (
+                <div key={player.id} className="text-center bg-white rounded-lg shadow-md border">
+                  {imgUrl ? (
+                    <img 
+                      src={imgUrl}
+                      alt={attrs.name}
+                      className="w-full aspect-square object-cover rounded-t-lg"
+                    />
+                  ) : (
+                    <div className="w-full aspect-square bg-gray-200 flex items-center justify-center rounded-t-lg">
+                      <span className="text-3xl">⚽</span>
+                    </div>
+                  )}
+                  <div className="p-5">
+                    <p className="text-white text-xl font-bold">{attrs.name}</p>
+                    <p className="text-gray-500 text-sm">{formatDate(attrs.birthdate)}</p>
+                  </div>
                 </div>
-              )}
-              <div className="p-5">
-                <p className="text-white text-xl font-bold">{attrs.name}</p>
-                <p className="text-gray-500 text-sm">{formatDate(attrs.birthdate)}</p>
-              </div>
-            </div>
-          )
-        })}
-      </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
