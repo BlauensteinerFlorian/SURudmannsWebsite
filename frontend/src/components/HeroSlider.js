@@ -20,7 +20,6 @@ export default function HeroSlider() {
         if (data.data && data.data.length > 0) {
           setSlides(data.data)
         } else {
-          // Fallback slides if no data in CMS
           setSlides([
             {
               id: 1,
@@ -48,7 +47,6 @@ export default function HeroSlider() {
         }
       } catch (e) {
         console.error('Error fetching slides:', e)
-        // Fallback
         setSlides([
           {
             id: 1,
@@ -68,6 +66,14 @@ export default function HeroSlider() {
     fetchSlides()
   }, [])
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }
+
   useEffect(() => {
     if (slides.length <= 1) return
     const timer = setInterval(() => {
@@ -78,39 +84,25 @@ export default function HeroSlider() {
 
   if (loading || slides.length === 0) {
     return (
-      <section className="bg-[#1a1a18] text-white h-[500px] flex items-center justify-center">
+      <section className="bg-[#1a1a18] text-white h-[600px] flex items-center justify-center">
         <p>Lädt...</p>
       </section>
     )
   }
 
-function getAttributes(item) {
-  return item.attributes || item
-}
-
-function getSlideImage(slide) {
-  // Handle both Strapi v4 (with attributes) and v5 (flat)
-  const attrs = getAttributes(slide)
-  
-  // Strapi 5: direct image object with url
-  if (attrs.image?.url) {
-    return `http://localhost:1337${attrs.image.url}`
+  const getSlideImage = (slide) => {
+    const attrs = getAttributes(slide)
+    if (attrs.image?.url) {
+      return `http://localhost:1337${attrs.image.url}`
+    }
+    const img = attrs.image?.data?.attributes || attrs.image?.data
+    return img?.url ? `http://localhost:1337${img.url}` : null
   }
-  
-  // Strapi v4 with populate: image.data.attributes.url
-  const img = attrs.image?.data?.attributes || attrs.image?.data
-  if (img?.url) {
-    return `http://localhost:1337${img.url}`
-  }
-  
-  return null
-}
 
   return (
-    <section className="relative h-[500px] overflow-hidden">
+    <section className="relative h-[600px] overflow-hidden">
       {slides.map((slide, index) => {
-        // Handle both Strapi v4 and v5 format
-        const attrs = typeof slide.attributes !== 'undefined' ? slide.attributes : slide
+        const attrs = getAttributes(slide)
         const bgImage = getSlideImage(slide)
         
         return (
@@ -150,6 +142,26 @@ function getSlideImage(slide) {
         )
       })}
       
+      {/* Left Arrow */}
+      {slides.length > 1 && (
+        <button 
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-[#ff6600] text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-[#ff6600] transition"
+        >
+          ←
+        </button>
+      )}
+
+      {/* Right Arrow */}
+      {slides.length > 1 && (
+        <button 
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-[#ff6600] text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-[#ff6600] transition"
+        >
+          →
+        </button>
+      )}
+      
       {/* Dots */}
       {slides.length > 1 && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
@@ -158,7 +170,7 @@ function getSlideImage(slide) {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`w-3 h-3 rounded-full transition ${
-                index === currentSlide ? 'bg-white' : 'bg-white/50'
+                index === currentSlide ? 'bg-[#ff6600]' : 'bg-white/50'
               }`}
             />
           ))}
