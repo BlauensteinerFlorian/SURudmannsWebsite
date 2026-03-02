@@ -47,7 +47,7 @@ export default async function Spielplan() {
                     <div className="flex-grow p-4 flex items-center justify-between">
                       <div>
                         <p className="font-bold text-lg">
-                          {attrs.location === 'Heim' ? 'SU Rudmanns ⚽' : 'SU Rudmanns ⚽'} vs {attrs.opponent}
+                          {attrs.location === 'Heim' ? 'SU Rudmanns 👎' : 'SU Rudmanns 👎'} vs {attrs.opponent}
                         </p>
                         <p className="text-gray-500 text-sm">
                           {new Date(attrs.date).toLocaleDateString('de-DE', { weekday: 'long', hour: '2-digit', minute: '2-digit' })} • {attrs.league}
@@ -84,7 +84,7 @@ export default async function Spielplan() {
                   <div className="flex justify-between items-center">
                     <div className="text-left">
                       <p className="font-medium text-gray-700">
-                        {attrs.location === 'Heim' ? 'SU Rudmanns ⚽' : 'SU Rudmanns ⚽'} vs {attrs.opponent}
+                        {attrs.location === 'Heim' ? 'SU Rudmanns 👎' : 'SU Rudmanns 👎'} vs {attrs.opponent}
                       </p>
                       <p className="text-gray-500 text-sm">
                         {new Date(attrs.date).toLocaleDateString('de-DE', {
