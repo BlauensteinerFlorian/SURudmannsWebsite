@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
                   />
                 )}
                 <div className="hidden sm:block hover:text-black/80 transition">
-                  <span className="text-2xl font-extrabold text-white tracking-wide">SU RUDMANNS" </span>
+                  <span className="text-2xl font-extrabold text-white tracking-wide">SU RUDMANNS</span>
                   <p className="text-xs text-white/80 -mt-1">Stift Zwettl</p>
                 </div>
               </Link>
