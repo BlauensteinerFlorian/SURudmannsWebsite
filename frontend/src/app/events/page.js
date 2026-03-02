@@ -45,14 +45,14 @@ export default function Events() {
     <div>
       {/* Hero */}
       <section className="bg-[#1a1a18] text-white py-20">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto max-w-[80%] px-6 text-center">
           <h1 className="text-5xl font-bold text-[#ff6600] mb-4">Events</h1>
           <p className="text-xl">Veranstaltungen bei SU Rudmanns</p>
         </div>
       </section>
 
       {/* Events Liste */}
-      <section className="py-12 container mx-auto px-6">
+      <section className="py-12 container mx-auto max-w-[80%] px-6">
         <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Kommende Veranstaltungen</h2>
         
         {events.length === 0 ? (

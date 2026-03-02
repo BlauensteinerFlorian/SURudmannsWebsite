@@ -68,7 +68,7 @@ export default async function Mannschaf() {
     <div>
       {/* Überschrift */}
       <section className="py-8">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto max-w-[80%] px-6">
           <h1 className="text-4xl font-bold text-center text-[#ff6600]">Unsere Mannschaft</h1>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default async function Mannschaf() {
       {/* Team Bild */}
       {teamImageUrl && (
         <section className="py-4">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto max-w-[80%] px-6">
             <img 
               src={teamImageUrl} 
               alt="Mannschaftsbild" 
@@ -88,7 +88,7 @@ export default async function Mannschaf() {
 
       {/* Spieler */}
       <section className="py-8">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto max-w-[80%] px-6">
           <h1 className="text-4xl font-bold text-center text-[#ff6600] mb-8">Unsere Spieler</h1>
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">

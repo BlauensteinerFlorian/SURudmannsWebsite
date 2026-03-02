@@ -14,7 +14,7 @@ export default async function Vorstand() {
   const allMembers = members.data || []
 
   return (
-    <div className="container mx-auto px-6 py-8">
+    <div className="container mx-auto max-w-[80%] px-6 py-8">
       <h1 className="text-4xl font-bold text-center text-[#ff6600] mb-8">Vorstand</h1>
       
       {allMembers.length === 0 ? (
