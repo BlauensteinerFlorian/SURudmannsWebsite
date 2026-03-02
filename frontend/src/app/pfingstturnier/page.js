@@ -4,7 +4,13 @@ import { useState, useEffect } from 'react'
 
 export default function Pfingstturnier() {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-  const [formData, setFormData] = useState({ teamname: '', email: '', phone: '', message: '' })
+  const [formData, setFormData] = useState({ 
+    contactname: '', 
+    teamname: '', 
+    email: '', 
+    phone: '', 
+    message: '' 
+  })
   const [submitted, setSubmitted] = useState(false)
 
   // Pfingstsonntag 2026 berechnen (31. Mai 2026)
@@ -34,12 +40,13 @@ export default function Pfingstturnier() {
     e.preventDefault()
     console.log('Anmeldung:', formData)
     setSubmitted(true)
+    // Hier würde eine E-Mail versendet werden an: info@surudmanns.at
   }
 
   return (
     <div>
       {/* Hero Section with Countdown */}
-      <section className="bg-[#1a1a18] text-white py-8">
+      <section className="bg-[#1a1a18] text-white py-12">
         <div className="container mx-auto px-6 max-w-7xl text-center">
           <h1 className="text-5xl font-bold text-[#ff6600] mb-2">Pfingstturnier 2026</h1>
           <p className="text-xl mb-8">Sportunion Rudmanns</p>
@@ -66,87 +73,101 @@ export default function Pfingstturnier() {
         </div>
       </section>
 
-      {/* Turnier Info */}
+      {/* Info + Form side by side */}
       <section className="py-8 container mx-auto px-6 max-w-7xl">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Über das Turnier</h2>
-          <div className="prose mx-auto">
-            <p className="text-lg text-gray-700 mb-4">
-              Das traditionelle Pfingstturnier der SU Rudmanns findet jährlich am Pfingstsonntag statt.
-              Teams aus der ganzen Region treffen sich im Birkenstadion Stift Zwettl.
-            </p>
-            <ul className="list-disc pl-6 mb-4">
-              <li>Beginn: 14:00 Uhr</li>
-              <li>Modus: Joker-Turnier</li>
-              <li>Startgeld: €50,- pro Team</li>
-              <li>Für Speis und Trank ist bestgesorgt!</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Anmeldung */}
-      <section className="py-8 bg-gray-50">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Anmeldung</h2>
+        <div className="grid md:grid-cols-2 gap-8">
           
-          {submitted ? (
-            <div className="max-w-md mx-auto bg-green-100 border border-green-400 text-green-700 px-6 py-3 rounded">
-              <p className="font-bold">Danke für deine Anmeldung!</p>
-              <p>Wir melden uns in Kürze bei dir.</p>
+          {/* Turnier Info */}
+          <div>
+            <h2 className="text-3xl font-bold text-[#ff6600] mb-6">Über das Turnier</h2>
+            <div className="prose">
+              <p className="text-lg text-gray-700 mb-4">
+                Das traditionelle Pfingstturnier der SU Rudmanns findet jährlich am Pfingstsonntag statt.
+                Teams aus der ganzen Region treffen sich im Birkenstadion Stift Zwettl.
+              </p>
+              <ul className="list-disc pl-6 mb-4 text-gray-700">
+                <li>Beginn: 14:00 Uhr</li>
+                <li>Modus: Joker-Turnier</li>
+                <li>Startgeld: €50,- pro Team</li>
+                <li>Für Speis und Trank ist bestgesorgt!</li>
+              </ul>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-              <div className="mb-4">
-                <label className="block text-gray-700 font-bold mb-2">Teamname *</label>
-                <input 
-                  type="text" 
-                  required
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
-                  value={formData.teamname}
-                  onChange={(e) => setFormData({...formData, teamname: e.target.value})}
-                />
+          </div>
+
+          {/* Anmeldung Form */}
+          <div>
+            <h2 className="text-3xl font-bold text-[#ff6600] mb-6">Anmeldung</h2>
+            
+            {submitted ? (
+              <div className="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded">
+                <p className="font-bold">Danke für deine Anmeldung!</p>
+                <p>Wir melden uns in Kürze bei dir.</p>
               </div>
-              
-              <div className="mb-4">
-                <label className="block text-gray-700 font-bold mb-2">E-Mail *</label>
-                <input 
-                  type="email" 
-                  required
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label className="block text-gray-700 font-bold mb-2">Telefon</label>
-                <input 
-                  type="tel"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label className="block text-gray-700 font-bold mb-2">Nachricht</label>
-                <textarea 
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
-                  rows="4"
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                />
-              </div>
-              
-              <button 
-                type="submit"
-                className="w-full bg-[#ff6600] text-white font-bold py-3 rounded-lg hover:bg-orange-600"
-              >
-                Anmeldung absenden
-              </button>
-            </form>
-          )}
+            ) : (
+              <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-bold mb-2">Vor- und Nachname *</label>
+                  <input 
+                    type="text" 
+                    required
+                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+                    value={formData.contactname}
+                    onChange={(e) => setFormData({...formData, contactname: e.target.value})}
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-bold mb-2">Teamname *</label>
+                  <input 
+                    type="text" 
+                    required
+                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+                    value={formData.teamname}
+                    onChange={(e) => setFormData({...formData, teamname: e.target.value})}
+                  />
+                </div>
+                
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-bold mb-2">E-Mail *</label>
+                  <input 
+                    type="email" 
+                    required
+                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  />
+                </div>
+                
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-bold mb-2">Telefon *</label>
+                  <input 
+                    type="tel"
+                    required
+                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  />
+                </div>
+                
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-bold mb-2">Nachricht</label>
+                  <textarea 
+                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+                    rows="3"
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  />
+                </div>
+                
+                <button 
+                  type="submit"
+                  className="w-full bg-[#ff6600] text-white font-bold py-3 rounded-lg hover:bg-orange-600"
+                >
+                  Anmeldung absenden
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </section>
     </div>
