@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/home-sliders",
+      "handler": "home-slider.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/home-sliders/:id",
+      "handler": "home-slider.findOne",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

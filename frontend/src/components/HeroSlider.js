@@ -3,80 +3,150 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
+function getAttributes(item) {
+  return item.attributes || item
+}
+
 export default function HeroSlider() {
+  const [slides, setSlides] = useState([])
   const [currentSlide, setCurrentSlide] = useState(0)
-  
-  const slides = [
-    {
-      title: "SU Rudmanns",
-      subtitle: "Stift Zwettl",
-      description: "Football unter Birken seit 1988",
-      cta: "Mannschaft ansehen",
-      ctaLink: "/mannschaft",
-      bgColor: "bg-[#1a1a18]"
-    },
-    {
-      title: "Pfingstturnier 2026",
-      subtitle: "31. Mai 2026",
-      description: "Das größte Turnier der Region",
-      cta: "Jetzt anmelden",
-      ctaLink: "/pfingstturnier",
-      bgColor: "bg-[#da8d43]"
-    },
-    {
-      title: "Pokalsieger 2024",
-      subtitle: "Unser größter Erfolg",
-      description: "Wir sind stolz auf unser Team!",
-      cta: "Mehr erfahren",
-      ctaLink: "/news",
-      bgColor: "bg-[#1a1a18]"
-    }
-  ]
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    async function fetchSlides() {
+      try {
+        const res = await fetch('http://localhost:1337/api/home-sliders?sort=order:asc&populate=image')
+        const data = await res.json()
+        if (data.data && data.data.length > 0) {
+          setSlides(data.data)
+        } else {
+          // Fallback slides if no data in CMS
+          setSlides([
+            {
+              id: 1,
+              attributes: {
+                title: "SU Rudmanns",
+                subtitle: "Stift Zwettl",
+                description: "Football unter Birken seit 1988",
+                cta: "Mannschaft ansehen",
+                ctaLink: "/mannschaft",
+                bgColor: "#1a1a18"
+              }
+            },
+            {
+              id: 2,
+              attributes: {
+                title: "Pfingstturnier 2026",
+                subtitle: "31. Mai 2026",
+                description: "Das größte Turnier der Region",
+                cta: "Jetzt anmelden",
+                ctaLink: "/pfingstturnier",
+                bgColor: "#da8d43"
+              }
+            }
+          ])
+        }
+      } catch (e) {
+        console.error('Error fetching slides:', e)
+        // Fallback
+        setSlides([
+          {
+            id: 1,
+            attributes: {
+              title: "SU Rudmanns",
+              subtitle: "Stift Zwettl",
+              description: "Football unter Birken seit 1988",
+              cta: "Mannschaft ansehen",
+              ctaLink: "/mannschaft",
+              bgColor: "#1a1a18"
+            }
+          }
+        ])
+      }
+      setLoading(false)
+    }
+    fetchSlides()
+  }, [])
+
+  useEffect(() => {
+    if (slides.length <= 1) return
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, 5000)
     return () => clearInterval(timer)
   }, [slides.length])
 
+  if (loading || slides.length === 0) {
+    return (
+      <section className="bg-[#1a1a18] text-white h-[500px] flex items-center justify-center">
+        <p>Lädt...</p>
+      </section>
+    )
+  }
+
+  const getSlideImage = (slide) => {
+    const attrs = getAttributes(slide)
+    const img = attrs.image?.data?.attributes
+    return img ? `http://localhost:1337${img.url}` : null
+  }
+
   return (
     <section className="relative h-[500px] overflow-hidden">
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 ${slide.bgColor} transition-opacity duration-700 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <div className="container mx-auto px-4 h-full flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-5xl md:text-7xl font-bold mb-4">{slide.title}</h1>
-              <p className="text-2xl mb-2">{slide.subtitle}</p>
-              <p className="text-lg text-gray-300 mb-8">{slide.description}</p>
-              <Link
-                href={slide.ctaLink}
-                className="inline-block bg-white text-[#1a1a18] px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition"
-              >
-                {slide.cta}
-              </Link>
+      {slides.map((slide, index) => {
+        const attrs = getAttributes(slide)
+        const bgImage = getSlideImage(slide)
+        
+        return (
+          <div
+            key={slide.id}
+            className="absolute inset-0 transition-opacity duration-700"
+            style={{
+              backgroundColor: bgImage ? 'transparent' : attrs.bgColor || '#1a1a18',
+              opacity: index === currentSlide ? 1 : 0
+            }}
+          >
+            {bgImage && (
+              <div 
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${bgImage})` }}
+              />
+            )}
+            {bgImage && (
+              <div className="absolute inset-0 bg-black/50" />
+            )}
+            <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center">
+              <div className="text-center text-white">
+                <h1 className="text-5xl md:text-7xl font-bold mb-4">{attrs.title}</h1>
+                {attrs.subtitle && <p className="text-2xl mb-2">{attrs.subtitle}</p>}
+                {attrs.description && <p className="text-lg text-gray-300 mb-8">{attrs.description}</p>}
+                {attrs.cta && (
+                  <Link
+                    href={attrs.ctaLink || '/'}
+                    className="inline-block bg-white text-[#1a1a18] px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition"
+                  >
+                    {attrs.cta}
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
       
       {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition ${
-              index === currentSlide ? 'bg-white' : 'bg-white/50'
-            }`}
-          />
-        ))}
-      </div>
+      {slides.length > 1 && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition ${
+                index === currentSlide ? 'bg-white' : 'bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   )
 }
