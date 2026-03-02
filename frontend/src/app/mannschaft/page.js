@@ -91,7 +91,7 @@ export default async function Mannschaf() {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold text-center text-[#ff6600] mb-8">Unsere Spieler</h1>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
             {allPlayers.map((player) => {
               const attrs = getAttributes(player)
               const imgUrl = getImageUrl(player)
@@ -112,9 +112,9 @@ export default async function Mannschaf() {
                       <span className="text-3xl">⚽</span>
                     </div>
                   )}
-                  <div className="p-3">
-                    <p className="text-white text-base font-bold">{attrs.name}</p>
-                    <p className="text-gray-500 text-xs">{formatDate(attrs.birthdate)}</p>
+                  <div className="p-5">
+                    <p className="text-white text-xl font-bold">{attrs.name}</p>
+                    <p className="text-gray-500 text-sm">{formatDate(attrs.birthdate)}</p>
                   </div>
                 </div>
               )
