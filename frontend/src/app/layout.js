@@ -1,30 +1,104 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import '@/styles/globals.css'
 import SponsorsSection from '@/components/SponsorsSection'
 
-export const metadata = {
-  title: 'SU Rudmanns - Fußball unter Birken seit 1988',
-  description: 'Offizielle Website von Sportunion Rudmanns',
+// Fetch logo
+async function getLogo() {
+  try {
+    const res = await fetch('http://localhost:1337/api/logo?populate=image', { cache: 'no-store' })
+    const data = await res.json()
+    if (data.data) {
+      const img = data.data.image?.data?.attributes || data.data.image?.data
+      if (img?.url) {
+        return `http://localhost:1337${img.url}`
+      }
+    }
+  } catch (e) {
+    console.error('Logo fetch error:', e)
+  }
+  return null
 }
 
 export default function RootLayout({ children }) {
+  const [logoUrl, setLogoUrl] = useState(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    getLogo().then(setLogoUrl)
+  }, [])
+
+  const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/mannschaft', label: 'Mannschaft' },
+    { href: '/spielplan', label: 'Spielplan' },
+    { href: '/pfingstturnier', label: 'Pfingstturnier' },
+    { href: '/events', label: 'Events' },
+    { href: '/news', label: 'News' },
+    { href: '/fanshop', label: 'Fanshop' },
+  ]
+
   return (
     <html lang="de">
       <body className="min-h-screen flex flex-col bg-[#0a0a0a]">
         {/* Header */}
-        <header className="bg-[#ff6600] text-white sticky top-0 z-50">
-          <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold text-white">SU Rudmanns</Link>
-            <ul className="flex gap-4 md:gap-6 text-sm md:text-base">
-              <li><Link href="/" className="hover:text-black font-medium">Home</Link></li>
-              <li><Link href="/mannschaft" className="hover:text-black font-medium">Mannschaft</Link></li>
-              <li><Link href="/spielplan" className="hover:text-black font-medium">Spielplan</Link></li>
-              <li><Link href="/pfingstturnier" className="hover:text-black font-medium">Pfingstturnier</Link></li>
-              <li><Link href="/events" className="hover:text-black font-medium">Events</Link></li>
-              <li><Link href="/news" className="hover:text-black font-medium">News</Link></li>
-              <li><Link href="/fanshop" className="hover:text-black font-medium">Fanshop</Link></li>
-            </ul>
-          </nav>
+        <header className="bg-[#ff6600] sticky top-0 z-50">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between h-16">
+              {/* Logo + Brand */}
+              <Link href="/" className="flex items-center gap-3">
+                {logoUrl && (
+                  <img src={logoUrl} alt="Logo" className="h-10 w-auto" />
+                )}
+                <span className="text-xl font-bold text-white hidden sm:block">SU Rudmanns</span>
+              </Link>
+
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex items-center gap-6">
+                {navItems.map((item) => (
+                  <Link 
+                    key={item.href} 
+                    href={item.href} 
+                    className="text-white font-medium hover:text-black transition text-sm"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+
+              {/* Mobile Menu Button */}
+              <button 
+                className="md:hidden text-white p-2"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
+
+            {/* Mobile Navigation */}
+            {mobileMenuOpen && (
+              <nav className="md:hidden py-4 border-t border-orange-400">
+                {navItems.map((item) => (
+                  <Link 
+                    key={item.href} 
+                    href={item.href} 
+                    className="block py-2 text-white font-medium hover:text-black"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            )}
+          </div>
         </header>
         
         {/* Main Content */}
