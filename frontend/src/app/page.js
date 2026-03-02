@@ -146,7 +146,7 @@ export default async function Home() {
 
       {/* Next Game Section */}
       <section className="py-12 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+        <div className="max-w-4xl mx-auto bg-white border rounded-lg shadow-md p-8">
           <p className="text-center text-gray-500 uppercase tracking-wider mb-6">Nächstes Spiel</p>
           
           {/* Teams */}
