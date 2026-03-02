@@ -86,7 +86,7 @@ export default async function Home() {
             const attrs = card.attributes || card
             return (
               <div key={card.id} className="p-6 border rounded-lg bg-white shadow-sm text-center">
-                <h3 className="text-xl font-bold text-[#ff6600] mb-4">{attrs.title}</h3>
+                <h3 className="text-2xl font-bold text-white min-h-[120px] mb-4">{attrs.title}</h3>
                 <p className="text-gray-600">{attrs.subtitle}</p>
               </div>
             )
@@ -98,7 +98,7 @@ export default async function Home() {
       <section className="py-12 container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="p-6 border rounded-lg bg-white shadow-sm">
-            <h3 className="text-xl font-bold text-[#ff6600] mb-4">Nächstes Spiel</h3>
+            <h3 className="text-2xl font-bold text-white min-h-[120px] mb-4">Nächstes Spiel</h3>
             {upcomingGames.length > 0 ? (
               <div>
                 <p className="font-bold">{getAttributes(upcomingGames[0]).opponent}</p>
@@ -112,7 +112,7 @@ export default async function Home() {
           </div>
 
           <div className="p-6 border rounded-lg bg-white shadow-sm">
-            <h3 className="text-xl font-bold text-[#ff6600] mb-4">Aktuelle News</h3>
+            <h3 className="text-2xl font-bold text-white min-h-[120px] mb-4">Aktuelle News</h3>
             {latestNews.length > 0 ? (
               <div>
                 <p className="font-bold">{getAttributes(latestNews[0]).title}</p>
@@ -122,7 +122,7 @@ export default async function Home() {
           </div>
 
           <div className="p-6 border rounded-lg bg-white shadow-sm">
-            <h3 className="text-xl font-bold text-[#ff6600] mb-4">Sponsoren</h3>
+            <h3 className="text-2xl font-bold text-white min-h-[120px] mb-4">Sponsoren</h3>
             <p className="text-gray-600 mb-2">{sponsorList.length} Sponsoren</p>
             <Link href="/sponsoren" className="text-[#ff6600] hover:underline">Unsere Sponsoren →</Link>
           </div>
