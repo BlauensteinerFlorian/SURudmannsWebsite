@@ -520,6 +520,41 @@ export interface ApiGameGame extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHomeSliderHomeSlider extends Struct.CollectionTypeSchema {
+  collectionName: 'home_sliders';
+  info: {
+    displayName: 'Home Slider';
+    pluralName: 'home-sliders';
+    singularName: 'home-slider';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bgColor: Schema.Attribute.String & Schema.Attribute.DefaultTo<'#1a1a18'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.String;
+    ctaLink: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-slider.home-slider'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
   collectionName: 'players';
   info: {
@@ -1130,6 +1165,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::event.event': ApiEventEvent;
       'api::game.game': ApiGameGame;
+      'api::home-slider.home-slider': ApiHomeSliderHomeSlider;
       'api::player.player': ApiPlayerPlayer;
       'api::sponsor.sponsor': ApiSponsorSponsor;
       'api::team-member.team-member': ApiTeamMemberTeamMember;

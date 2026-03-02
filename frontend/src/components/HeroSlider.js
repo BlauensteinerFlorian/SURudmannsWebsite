@@ -86,8 +86,9 @@ export default function HeroSlider() {
 
   const getSlideImage = (slide) => {
     const attrs = getAttributes(slide)
-    const img = attrs.image?.data?.attributes
-    return img ? `http://localhost:1337${img.url}` : null
+    // Strapi 5 format: image.data.attributes.url
+    const img = attrs.image?.data?.attributes || attrs.image?.data
+    return img?.url ? `http://localhost:1337${img.url}` : null
   }
 
   return (
