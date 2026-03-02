@@ -100,14 +100,15 @@ export default async function Home() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {news.data?.slice(0, 3).map((article) => {
             const attrs = getAttributes(article)
-            // Get image URL
+            
+            // Get image URL - Strapi 5 format: image is an array or direct object
             let imgUrl = null
-            if (attrs.image?.data?.attributes?.url) {
-              imgUrl = `http://localhost:1337${attrs.image.data.attributes.url}`
-            } else if (attrs.image?.data?.url) {
-              imgUrl = `http://localhost:1337${attrs.image.data.url}`
-            } else if (attrs.image?.url) {
-              imgUrl = `http://localhost:1337${attrs.image.url}`
+            if (attrs.image) {
+              // Handle array of images
+              const imgObj = Array.isArray(attrs.image) ? attrs.image[0] : attrs.image
+              if (imgObj?.url) {
+                imgUrl = `http://localhost:1337${imgObj.url}`
+              }
             }
             
             // Get content preview
@@ -123,17 +124,19 @@ export default async function Home() {
             const dateStr = attrs.publishedAt ? new Date(attrs.publishedAt).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) : ''
             
             return (
-              <div key={article.id} className="border rounded-lg bg-white shadow-sm overflow-hidden">
+              <div key={article.id} className="border rounded-lg bg-white shadow-sm overflow-hidden flex flex-col">
                 {imgUrl && (
                   <img src={imgUrl} alt={attrs.title} className="w-full h-48 object-cover" />
                 )}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                   {dateStr && <p className="text-sm text-gray-500 mb-2">{dateStr}</p>}
                   <h3 className="text-xl font-bold text-[#ff6600] mb-2">{attrs.title}</h3>
                   {contentPreview && <p className="text-gray-600 mb-4">{contentPreview}</p>}
-                  <Link href="/news" className="inline-block bg-[#ff6600] text-white px-4 py-2 rounded font-bold hover:bg-white hover:text-[#ff6600] transition">
-                    Weiterlesen
-                  </Link>
+                  <div className="mt-auto">
+                    <Link href="/news" className="inline-block bg-[#ff6600] text-white px-4 py-2 rounded font-bold hover:bg-white hover:text-[#ff6600] transition">
+                      Weiterlesen
+                    </Link>
+                  </div>
                 </div>
               </div>
             )
