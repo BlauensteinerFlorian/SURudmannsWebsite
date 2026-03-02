@@ -128,6 +128,45 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Next Game Section */}
+      <section className="py-12 container mx-auto px-4">
+        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+          <p className="text-center text-gray-500 uppercase tracking-wider mb-6">Nächstes Spiel</p>
+          
+          {/* Teams */}
+          <div className="flex items-center justify-between text-center mb-6">
+            <div className="flex-1">
+              <p className="text-xl font-bold text-[#ff6600]">SU Rudmanns</p>
+            </div>
+            <div className="px-4">
+              <p className="text-2xl font-bold text-gray-400">VS</p>
+            </div>
+            <div className="flex-1">
+              <p className="text-xl font-bold">{upcomingGames.length > 0 ? getAttributes(upcomingGames[0]).opponent : 'Gegner (TBD)'}</p>
+            </div>
+          </div>
+          
+          {/* Date & Location */}
+          <div className="text-center text-gray-600 mb-8">
+            {upcomingGames.length > 0 && getAttributes(upcomingGames[0]).date ? (
+              <p>
+                {new Date(getAttributes(upcomingGames[0]).date).toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                {getAttributes(upcomingGames[0]).location && ` | ${getAttributes(upcomingGames[0]).location}`}
+              </p>
+            ) : (
+              <p>Datum und Spielort werden noch bekannt gegeben</p>
+            )}
+          </div>
+          
+          {/* Button */}
+          <div className="text-center">
+            <Link href="/spielplan" className="inline-block bg-[#ff6600] text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-[#ff6600] transition">
+              Zum Spielplan
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
