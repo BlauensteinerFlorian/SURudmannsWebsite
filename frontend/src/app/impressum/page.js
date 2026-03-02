@@ -1,4 +1,23 @@
-export default function Impressum() {
+import Link from 'next/link'
+
+// Get team members from CMS
+async function getTeamMembers() {
+  try {
+    const res = await fetch('http://localhost:1337/api/team-members', { cache: 'no-store' })
+    const data = await res.json()
+    return data.data || []
+  } catch (e) {
+    console.error('Error fetching team members:', e)
+    return []
+  }
+}
+
+export default async function Impressum() {
+  const teamMembers = await getTeamMembers()
+  
+  // Find Obmann
+  const obmann = teamMembers.find(m => (m.function || '').toLowerCase() === 'obmann')
+
   return (
     <div>
       {/* Hero */}
@@ -22,8 +41,15 @@ export default function Impressum() {
 
           <div className="mb-8">
             <h3 className="font-bold text-lg mb-2">Ansprechpartner</h3>
-            <p className="text-gray-700">Walter Blauensteiner (Obmann)</p>
-            <p className="text-gray-700">E-Mail: obmann@surudmanns.at</p>
+            {obmann ? (
+              <>
+                <p className="text-gray-700">{obmann.name} ({obmann.function})</p>
+                {obmann.email && <p className="text-gray-700">E-Mail: {obmann.email}</p>}
+                {obmann.phone && <p className="text-gray-700">Tel: {obmann.phone}</p>}
+              </>
+            ) : (
+              <p className="text-gray-700">Walter Blauensteiner (Obmann)</p>
+            )}
           </div>
 
           <div className="mb-8">
