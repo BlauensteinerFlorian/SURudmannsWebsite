@@ -153,7 +153,7 @@ export default function RootLayout({ children }) {
               {/* Column 2: FOLGE UNS */}
               <div>
                 <h3 className="font-bold text-lg mb-4">FOLGE UNS</h3>
-                <div className="flex gap-4">
+                <div className="flex flex-col gap-2">
                   <a 
                     href="https://instagram.com/surudmanns" 
                     target="_blank" 
