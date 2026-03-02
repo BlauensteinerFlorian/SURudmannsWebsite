@@ -67,21 +67,21 @@ export default function Pfingstturnier() {
           
           {/* Countdown inline */}
           <div className="flex justify-center gap-2 md:gap-4 mt-8">
-            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[100px]">
-              <p className="text-3xl font-bold">{countdown.days}</p>
-              <p className="text-sm">Tage</p>
+            <div className="bg-[#ff6600] p-6 rounded-lg min-w-[120px]">
+              <p className="text-5xl font-bold">{countdown.days}</p>
+              <p className="text-lg">Tage</p>
             </div>
-            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[100px]">
-              <p className="text-3xl font-bold">{countdown.hours}</p>
-              <p className="text-sm">Stunden</p>
+            <div className="bg-[#ff6600] p-6 rounded-lg min-w-[120px]">
+              <p className="text-5xl font-bold">{countdown.hours}</p>
+              <p className="text-lg">Stunden</p>
             </div>
-            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[100px]">
-              <p className="text-3xl font-bold">{countdown.minutes}</p>
-              <p className="text-sm">Min</p>
+            <div className="bg-[#ff6600] p-6 rounded-lg min-w-[120px]">
+              <p className="text-5xl font-bold">{countdown.minutes}</p>
+              <p className="text-lg">Min</p>
             </div>
-            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[100px]">
-              <p className="text-3xl font-bold">{countdown.seconds}</p>
-              <p className="text-sm">Sek</p>
+            <div className="bg-[#ff6600] p-6 rounded-lg min-w-[120px]">
+              <p className="text-5xl font-bold">{countdown.seconds}</p>
+              <p className="text-lg">Sek</p>
             </div>
           </div>
         </div>
@@ -93,24 +93,24 @@ export default function Pfingstturnier() {
           
           {/* Turnier Info */}
           <div>
-            <h2 className="text-3xl font-bold text-[#ff6600] mb-6">Über das Turnier</h2>
+            <h2 className="text-5xl font-bold text-[#ff6600] mb-6">Über das Turnier</h2>
             <div className="prose">
               <p className="text-lg text-gray-700 mb-4">
                 Das traditionelle Pfingstturnier der SU Rudmanns findet jährlich am Pfingstsonntag statt.
                 Teams aus der ganzen Region treffen sich am Fußballplatz in Rudmanns.
               </p>
-              <ul className="list-disc pl-6 mb-4 text-gray-700">
-                <li>⏰ Beginn: 10:00 Uhr</li>
-                <li>⚽ Modus: Gruppenphase mit anschließenden Kreuzspielen</li>
-                <li>💰 Startgeld: €50,- pro Team (als Getränkegutscheine rückerstattet)</li>
-                <li>🍔 Für Speis und Trank ist bestgesorgt!</li>
-              </ul>
+              <div className="text-lg text-gray-700 space-y-2">
+                <p>⏰ <strong>Beginn:</strong> 10:00 Uhr</p>
+                <p>⚽ <strong>Modus:</strong> Gruppenphase mit anschließenden Kreuzspielen</p>
+                <p>💰 <strong>Startgeld:</strong> €50,- pro Team (als Getränkegutscheine rückerstattet)</p>
+                <p>🍔 <strong>Verpflegung:</strong> Für Speis und Trank ist bestgesorgt!</p>
+              </div>
             </div>
           </div>
 
           {/* Anmeldung Form */}
           <div>
-            <h2 className="text-3xl font-bold text-[#ff6600] mb-6">Anmeldung</h2>
+            <h2 className="text-5xl font-bold text-[#ff6600] mb-6">Anmeldung</h2>
             
             {submitted ? (
               <div className="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded">
