@@ -63,32 +63,6 @@ export default async function Home() {
       </section>
 
       <section className="py-12 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Der Kader</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
-            {playerList.slice(0, 12).map((player) => {
-              const attrs = getAttributes(player)
-              const imgUrl = getImageUrl(player)
-              return (
-                <div key={player.id} className="text-center bg-white rounded-lg shadow-sm">
-                  {imgUrl ? (
-                    <img src={imgUrl} alt={attrs.name} className="w-full h-32  object-cover" />
-                  ) : (
-                    <div className="w-full aspect-square bg-gray-200 flex items-center justify-center rounded-t-lg"><span className="text-2xl">⚽</span></div>
-                  )}
-                  <p className="font-bold text-sm">{attrs.name}</p>
-                  <p className="text-[#ff6600] text-sm">#{attrs.number || '-'}</p>
-                </div>
-              )
-            })}
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/mannschaft" className="bg-[#ff6600] text-white px-6 py-3 rounded-lg hover:bg-orange-600 inline-block">Ganzer Kader →</Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Über uns</h2>
         <div className="max-w-2xl mx-auto text-center">
           <p className="mb-4">Der Sportunion Rudmanns wurde 1988 gegründet und hat seine Heimat im Birkenstadion in Stift Zwettl.</p>
