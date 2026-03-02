@@ -17,7 +17,7 @@ export default async function Spielplan() {
   allGames.sort((a, b) => new Date(getAttributes(b).date) - new Date(getAttributes(a).date))
 
   return (
-    <div className="container mx-auto px-6 max-w-6xl py-8">
+    <div className="container mx-auto px-6 max-w-7xl py-8">
       <h1 className="text-4xl font-bold text-center text-[#ff6600] mb-8">Spielplan</h1>
       
       {allGames.length === 0 ? (
