@@ -2,6 +2,16 @@ import { getPlayers, getAttributes, getImageUrl } from '@/lib/api'
 
 export const revalidate = 60
 
+// Helper to format date to DD.MM.YYYY
+function formatDate(dateStr) {
+  if (!dateStr) return '-'
+  const date = new Date(dateStr)
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${day}.${month}.${year}`
+}
+
 export default async function Mannschaf() {
   let players = { data: [] }
   
@@ -25,7 +35,6 @@ export default async function Mannschaf() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Der Kader</h1>
-      <p className="text-center text-gray-600 mb-8">{allPlayers.length} Spieler</p>
       
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
         {allPlayers.map((player) => {
@@ -44,8 +53,10 @@ export default async function Mannschaf() {
                   <span className="text-3xl">⚽</span>
                 </div>
               )}
-              <p className="text-white text-xl font-bold">{attrs.name}</p>
-              <p className="text-gray-500 text-sm">{attrs.birthdate || '-'}</p>
+              <div className="p-5">
+                <p className="text-white text-xl font-bold">{attrs.name}</p>
+                <p className="text-gray-500 text-sm">{formatDate(attrs.birthdate)}</p>
+              </div>
             </div>
           )
         })}

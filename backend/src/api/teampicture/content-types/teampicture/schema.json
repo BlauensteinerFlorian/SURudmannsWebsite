@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "teampictures",
+  "info": {
+    "singularName": "teampicture",
+    "pluralName": "teampictures",
+    "displayName": "teampicture"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
