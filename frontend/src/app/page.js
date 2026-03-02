@@ -1,32 +1,68 @@
 import Link from 'next/link'
 import HeroSlider from '@/components/HeroSlider'
-import { getPlayers, getUpcomingGames, getNews, getSponsors, getAttributes, getImageUrl } from '@/lib/api'
+import { getUpcomingGames, getNews, getSponsors, getAttributes } from '@/lib/api'
 
 export const revalidate = 60
 
+// Helper to get aboutus data
+async function getAboutUs() {
+  try {
+    const res = await fetch('http://localhost:1337/api/aboutus', { cache: 'no-store' })
+    const data = await res.json()
+    return data.data || null
+  } catch (e) {
+    console.error('Error fetching aboutus:', e)
+    return null
+  }
+}
+
 export default async function Home() {
-  let players = { data: [] }
   let games = { data: [] }
   let news = { data: [] }
   let sponsors = { data: [] }
+  let aboutus = null
 
   try {
-    players = await getPlayers()
-    games = await getUpcomingGames()
-    news = await getNews()
-    sponsors = await getSponsors()
+    const [gamesData, newsData, sponsorsData, aboutusData] = await Promise.all([
+      getUpcomingGames(),
+      getNews(),
+      getSponsors(),
+      getAboutUs()
+    ])
+    games = gamesData
+    news = newsData
+    sponsors = sponsorsData
+    aboutus = aboutusData
   } catch (error) {
     console.error('Error fetching data:', error)
   }
 
-  const playerList = players.data || []
   const upcomingGames = games.data?.slice(0, 3) || []
   const latestNews = news.data?.slice(0, 2) || []
   const sponsorList = sponsors.data || []
 
+  // Get aboutus content
+  const aboutTitle = aboutus?.title || 'Über uns'
+  const aboutDescription = aboutus?.description
+
   return (
     <div>
       <HeroSlider />
+
+      {/* Über uns Section - from CMS */}
+      <section className="py-12 bg-[#0a0a0a]">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">{aboutTitle}</h2>
+          <div className="max-w-2xl mx-auto text-center">
+            {aboutDescription && aboutDescription.map((block, index) => {
+              if (block.type === 'paragraph') {
+                return <p key={index} className="mb-4">{block.children?.[0]?.text}</p>
+              }
+              return null
+            })}
+          </div>
+        </div>
+      </section>
 
       <section className="py-12 container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
@@ -59,14 +95,6 @@ export default async function Home() {
             <p className="text-gray-600 mb-2">{sponsorList.length} Sponsoren</p>
             <Link href="/sponsoren" className="text-[#ff6600] hover:underline">Unsere Sponsoren →</Link>
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 bg-[#0a0a0a]">
-        <h2 className="text-3xl font-bold text-center mb-8">Über uns</h2>
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="mb-4">Der Sportunion Rudmanns wurde 1988 gegründet und hat seine Heimat im Birkenstadion in Stift Zwettl.</p>
-          <p className="mb-4 font-bold text-[#ff6600]">Pokalsieg 2024 - unser größter Erfolg!</p>
         </div>
       </section>
     </div>
