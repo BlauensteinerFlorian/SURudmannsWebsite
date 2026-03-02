@@ -66,7 +66,7 @@ export default async function Home() {
 
       {/* About us Section */}
       <section className="pt-12 pb-0 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">{aboutTitle}</h2>
           <div className="max-w-2xl mx-auto text-center">
             {aboutDescription && aboutDescription.map((block, index) => {
@@ -80,7 +80,7 @@ export default async function Home() {
       </section>
 
       {/* Home Cards Grid */}
-      <section className="py-12 container mx-auto px-4">
+      <section className="py-12 container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {homeCards.map((card) => {
             const attrs = card.attributes || card
@@ -95,7 +95,7 @@ export default async function Home() {
       </section>
 
       {/* Aktuelle News Section */}
-      <section className="py-12 container mx-auto px-4">
+      <section className="py-12 container mx-auto px-6">
         <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Aktuelle News</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {news.data?.slice(0, 3).map((article) => {
@@ -133,7 +133,7 @@ export default async function Home() {
                   <h3 className="text-xl font-bold text-[#ff6600] mb-2">{attrs.title}</h3>
                   {contentPreview && <p className="text-gray-600 mb-4">{contentPreview}</p>}
                   <div className="mt-auto">
-                    <Link href="/news" className="inline-block bg-[#ff6600] text-white px-4 py-2 rounded font-bold hover:bg-white hover:text-[#ff6600] transition">
+                    <Link href="/news" className="inline-block bg-[#ff6600] text-white px-6 py-2 rounded font-bold hover:bg-white hover:text-[#ff6600] transition">
                       Weiterlesen
                     </Link>
                   </div>
@@ -145,7 +145,7 @@ export default async function Home() {
       </section>
 
       {/* Next Game Section */}
-      <section className="py-12 container mx-auto px-4">
+      <section className="py-12 container mx-auto px-6">
         <div className="max-w-4xl mx-auto bg-white border rounded-lg shadow-md p-8">
           <p className="text-center text-gray-500 uppercase tracking-wider mb-6">Nächstes Spiel</p>
           
@@ -154,7 +154,7 @@ export default async function Home() {
             <div className="flex-1">
               <p className="text-xl font-bold text-[#ff6600]">SU Rudmanns</p>
             </div>
-            <div className="px-4">
+            <div className="px-6">
               <p className="text-2xl font-bold text-gray-400">VS</p>
             </div>
             <div className="flex-1">

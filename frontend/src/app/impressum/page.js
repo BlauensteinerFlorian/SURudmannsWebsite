@@ -22,13 +22,13 @@ export default async function Impressum() {
     <div>
       {/* Hero */}
       <section className="bg-[#1a1a18] text-white py-16">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl font-bold text-[#ff6600] mb-4">Impressum</h1>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-12 container mx-auto px-4">
+      <section className="py-12 container mx-auto px-6">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-6 text-[#ff6600]">Angaben gemäß § 5 ECG</h2>
           
