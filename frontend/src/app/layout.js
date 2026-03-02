@@ -64,20 +64,19 @@ export default function RootLayout({ children }) {
               <div>
                 <h3 className="font-bold mb-4">Standort</h3>
                 <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21106.571406185332!2d15.18345227368689!3d48.603690378866645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4772e95cb7e1e573%3A0xdd98646acf70beb9!2sFu%C3%9Fballplatz%20Sportunion%20Rudmanns%2FStift%20Zwettl!5e0!3m2!1sde!2sat!4v1772478274132!5m2!1sde!2sat" 
                   width="100%" 
                   height="150" 
-                  frameBorder="0" 
-                  scrolling="no" 
-                  marginHeight="0" 
-                  marginWidth="0" 
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=15.345,48.570,15.365,48.590&amp;layer=mapnik&amp;marker=48.5789,15.3521"
                   style={{ border: 0, borderRadius: '8px' }}
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
                 <a 
-                  href="https://www.openstreetmap.org/?mlat=48.5789&amp;mlon=15.3521#map=15/48.5789/15.3521" 
+                  href="https://www.google.com/maps/place/Fu%C3%9Fballplatz+Sportunion+Rudmanns/@48.6036904,15.1834523,15z" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-sm hover:text-black underline"
+                  className="text-sm hover:text-black underline block mt-2"
                 >
                   Größere Karte ansehen
                 </a>
