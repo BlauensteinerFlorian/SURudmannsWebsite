@@ -23,7 +23,7 @@ export default function SponsorsSection() {
   if (!sponsors.length) return null
 
   return (
-    <section className="py-8 bg-[#0a0a0a]">
+    <section className="py-8 bg-[#1a1a1a] p-6 border rounded-lg shadow-sm">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Unsere Sponsoren</h2>
         <div className="overflow-hidden">
