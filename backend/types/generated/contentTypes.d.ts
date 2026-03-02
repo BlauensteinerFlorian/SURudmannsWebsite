@@ -549,6 +549,39 @@ export interface ApiGameGame extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHomeCardHomeCard extends Struct.CollectionTypeSchema {
+  collectionName: 'home_cards';
+  info: {
+    displayName: 'home_card';
+    pluralName: 'home-cards';
+    singularName: 'home-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-card.home-card'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 16;
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomeSliderHomeSlider extends Struct.CollectionTypeSchema {
   collectionName: 'home_sliders';
   info: {
@@ -1250,6 +1283,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::event.event': ApiEventEvent;
       'api::game.game': ApiGameGame;
+      'api::home-card.home-card': ApiHomeCardHomeCard;
       'api::home-slider.home-slider': ApiHomeSliderHomeSlider;
       'api::logo.logo': ApiLogoLogo;
       'api::player.player': ApiPlayerPlayer;
