@@ -141,41 +141,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Legacy Content Cards (optional - keeping for now) */}
-      <section className="py-12 container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="p-6 border rounded-lg bg-white shadow-sm">
-            <h3 className="text-2xl font-bold text-white min-h-[120px] mb-4">Nächstes Spiel</h3>
-            {upcomingGames.length > 0 ? (
-              <div>
-                <p className="font-bold">{getAttributes(upcomingGames[0]).opponent}</p>
-                <p className="text-gray-600">
-                  {new Date(getAttributes(upcomingGames[0]).date).toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
-                </p>
-                <p className="text-sm text-gray-500">{getAttributes(upcomingGames[0]).location}</p>
-              </div>
-            ) : (<p>Keine Spiele geplant</p>)}
-            <Link href="/spielplan" className="text-[#ff6600] hover:underline mt-2 inline-block">Zum Spielplan →</Link>
-          </div>
-
-          <div className="p-6 border rounded-lg bg-white shadow-sm">
-            <h3 className="text-2xl font-bold text-white min-h-[120px] mb-4">Aktuelle News</h3>
-            {latestNews.length > 0 ? (
-              <div>
-                <p className="font-bold">{getAttributes(latestNews[0]).title}</p>
-                <Link href="/news" className="text-[#ff6600] hover:underline mt-2 inline-block">Alle News →</Link>
-              </div>
-            ) : (<p>Keine News vorhanden</p>)}
-          </div>
-
-          <div className="p-6 border rounded-lg bg-white shadow-sm">
-            <h3 className="text-2xl font-bold text-white min-h-[120px] mb-4">Sponsoren</h3>
-            <p className="text-gray-600 mb-2">{sponsorList.length} Sponsoren</p>
-            <Link href="/sponsoren" className="text-[#ff6600] hover:underline">Unsere Sponsoren →</Link>
-          </div>
-        </div>
-      </section>
-
       {/* Next Game Section */}
       <section className="py-12 container mx-auto px-4">
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
