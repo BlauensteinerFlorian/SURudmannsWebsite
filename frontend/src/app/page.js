@@ -72,9 +72,9 @@ export default async function Home() {
               return (
                 <div key={player.id} className="text-center p-4 bg-white rounded-lg shadow-sm">
                   {imgUrl ? (
-                    <img src={imgUrl} alt={attrs.name} className="w-20 h-20 rounded-full mx-auto mb-2 object-cover" />
+                    <img src={imgUrl} alt={attrs.name} className="w-20 h-20  object-cover" />
                   ) : (
-                    <div className="w-20 h-20 rounded-full mx-auto mb-2 bg-gray-200 flex items-center justify-center"><span className="text-2xl">⚽</span></div>
+                    <div className="w-20 h-20  bg-gray-200 flex items-center justify-center"><span className="text-2xl">⚽</span></div>
                   )}
                   <p className="font-bold text-sm">{attrs.name}</p>
                   <p className="text-[#ff6600] text-sm">#{attrs.number || '-'}</p>
