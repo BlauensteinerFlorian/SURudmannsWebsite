@@ -25,7 +25,7 @@ export default function SponsorsSection() {
   return (
     <section className="py-8 bg-[#1a1a1a] p-6 border rounded-lg shadow-sm">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Unsere Sponsoren</h2>
+        <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-4">Unsere Sponsoren</h2>
         <div className="overflow-hidden">
           <div className="flex animate-scroll gap-16">
             {/* Double the sponsors for seamless loop */}
