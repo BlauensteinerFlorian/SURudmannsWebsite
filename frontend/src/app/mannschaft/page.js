@@ -80,7 +80,7 @@ export default async function Mannschaf() {
             <img 
               src={teamImageUrl} 
               alt="Mannschaftsbild" 
-              className="w-full max-h-[400px] object-cover rounded-lg"
+              className="w-full h-auto  rounded-lg"
             />
           </div>
         </section>
@@ -105,7 +105,7 @@ export default async function Mannschaf() {
                     <img 
                       src={imgUrl}
                       alt={attrs.name}
-                      className="w-full aspect-square object-cover rounded-t-lg"
+                      className="w-full aspect-square  rounded-t-lg"
                     />
                   ) : (
                     <div className="w-full aspect-square bg-gray-200 flex items-center justify-center rounded-t-lg">
