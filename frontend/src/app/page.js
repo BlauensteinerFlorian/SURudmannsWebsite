@@ -49,9 +49,7 @@ export default async function Home() {
     <div>
       <HeroSlider />
 
-      <div className="p-6 border shadow-sm">
-
-      {/* Über uns Section - from CMS */}
+      {/* About us Section */}
       <section className="pt-12 pb-0 bg-[#0a0a0a]">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">{aboutTitle}</h2>
@@ -66,6 +64,7 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Content Cards */}
       <section className="py-12 container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="p-6 border rounded-lg bg-white shadow-sm">

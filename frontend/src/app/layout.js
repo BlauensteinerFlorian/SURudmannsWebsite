@@ -32,7 +32,6 @@ export default function RootLayout({ children }) {
   }, [])
 
   const navItems = [
-    { href: '/', label: 'Home' },
     { href: '/mannschaft', label: 'Mannschaft' },
     { href: '/spielplan', label: 'Spielplan' },
     { href: '/pfingstturnier', label: 'Pfingstturnier' },
