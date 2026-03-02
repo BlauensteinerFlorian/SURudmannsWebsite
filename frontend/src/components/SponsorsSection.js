@@ -25,6 +25,7 @@ export default function SponsorsSection() {
   return (
     <section className="py-8 bg-[#0a0a0a]">
       <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">Unsere Sponsoren</h2>
         <div className="overflow-hidden">
           <div className="flex animate-scroll gap-16">
             {/* Double the sponsors for seamless loop */}
@@ -37,13 +38,13 @@ export default function SponsorsSection() {
               return (
                 <div 
                   key={`${sponsor.id}-${index}`} 
-                  className="flex-shrink-0 flex items-center justify-center h-20 w-40"
+                  className="flex-shrink-0 flex items-center justify-center h-28 w-56"
                 >
                   {logoUrl ? (
                     <img 
                       src={logoUrl} 
                       alt={attrs.name || 'Sponsor'} 
-                      className="max-h-16 max-w-36 object-contain"
+                      className="max-h-24 max-w-48 object-contain"
                     />
                   ) : (
                     <span className="text-lg font-bold text-gray-400">{attrs.name}</span>
