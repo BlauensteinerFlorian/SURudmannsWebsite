@@ -3,12 +3,98 @@
 @tailwind utilities;
 
 :root {
-  --primary: #da8d43;
-  --secondary: #1a1a18;
-  --accent: #ffffff;
+  --primary: #ff6600;
+  --primary-hover: #e65c00;
+  --background: #0a0a0a;
+  --card: #2b2b2b;
+  --text: #ffffff;
+  --text-muted: #a0a0a0;
 }
 
 body {
-  color: var(--secondary);
-  background: var(--accent);
+  color: var(--text);
+  background: var(--background);
+  min-height: 100vh;
+}
+
+/* Override for Next.js default styles */
+html {
+  background: var(--background);
+}
+
+/* Card styles */
+.bg-white, .bg-gray-50, .bg-gray-100 {
+  background-color: var(--card) !important;
+}
+
+/* Text colors */
+.text-gray-600, .text-gray-700, .text-gray-500, .text-gray-400, .text-gray-300 {
+  color: var(--text-muted) !important;
+}
+
+/* Border colors */
+.border, .border-gray-200 {
+  border-color: #3a3a3a !important;
+}
+
+/* Orange buttons */
+.bg-\[\#da8d43\], .bg-orange-500, .bg-\[#da8d43\] {
+  background-color: var(--primary) !important;
+}
+
+.hover\:bg-orange-600:hover {
+  background-color: var(--primary-hover) !important;
+}
+
+/* Orange text */
+.text-\[\#da8d43\], .text-orange-500 {
+  color: var(--primary) !important;
+}
+
+/* Orange hover text */
+.hover\:text-\[\#da8d43\]:hover, .hover\:text-orange-500:hover {
+  color: var(--primary) !important;
+}
+
+/* Button variants - orange bg, white text */
+a[href="/"], 
+a[href="/"], 
+.btn-primary,
+button,
+a.px-6,
+a.px-8,
+.bg-\[\#da8d43\] {
+  background-color: var(--primary) !important;
+  color: white !important;
+}
+
+a[href="/"]:hover,
+.btn-primary:hover,
+button:hover,
+a.px-6:hover,
+a.px-8:hover,
+.bg-\[\#da8d43\]:hover {
+  background-color: white !important;
+  color: var(--primary) !important;
+}
+
+/* Section backgrounds */
+.bg-\[\#1a1a18\] {
+  background-color: #1a1a18 !important;
+}
+
+/* Gray backgrounds */
+.bg-gray-50, .bg-gray-100 {
+  background-color: var(--card) !important;
+}
+
+/* Input fields */
+input, textarea, select {
+  background-color: var(--card) !important;
+  color: var(--text) !important;
+  border-color: #3a3a3a !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted) !important;
 }

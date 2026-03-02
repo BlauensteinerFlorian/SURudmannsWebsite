@@ -4,7 +4,7 @@ export default function Fanshop() {
       {/* Hero */}
       <section className="bg-[#1a1a18] text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold text-[#da8d43] mb-4">Fanshop</h1>
+          <h1 className="text-5xl font-bold text-[#ff6600] mb-4">Fanshop</h1>
           <p className="text-xl">Hol dir dein SU Rudmanns Merch!</p>
         </div>
       </section>
@@ -20,7 +20,7 @@ export default function Fanshop() {
           <div className="bg-gray-100 p-8 rounded-lg">
             <p className="text-gray-600">
               <strong>Interesse?</strong> Schreib uns eine E-Mail an{' '}
-              <a href="mailto:info@surudmanns.at" className="text-[#da8d43] hover:underline">
+              <a href="mailto:info@surudmanns.at" className="text-[#ff6600] hover:underline">
                 info@surudmanns.at
               </a>
             </p>

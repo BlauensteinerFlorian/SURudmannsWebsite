@@ -27,16 +27,16 @@ export default async function Vorstand() {
             return (
               <div key={member.id} className="p-6 bg-white rounded-lg shadow-md border text-center">
                 {imgUrl ? (
-                  <img src={imgUrl} alt={attrs.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-[#da8d43]" />
+                  <img src={imgUrl} alt={attrs.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-[#ff6600]" />
                 ) : (
                   <div className="w-32 h-32 rounded-full mx-auto mb-4 bg-gray-200 flex items-center justify-center border-4 border-gray-300">
                     <span className="text-4xl">👤</span>
                   </div>
                 )}
                 <p className="font-bold text-lg">{attrs.name}</p>
-                <p className="text-[#da8d43] font-semibold">{attrs.function}</p>
+                <p className="text-[#ff6600] font-semibold">{attrs.function}</p>
                 {attrs.email && (
-                  <a href={`mailto:${attrs.email}`} className="text-sm text-gray-500 hover:text-[#da8d43] block mt-2">
+                  <a href={`mailto:${attrs.email}`} className="text-sm text-gray-500 hover:text-[#ff6600] block mt-2">
                     {attrs.email}
                   </a>
                 )}

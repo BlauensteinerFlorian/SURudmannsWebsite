@@ -42,7 +42,7 @@ export default function Pfingstturnier() {
       {/* Hero Section */}
       <section className="bg-[#1a1a18] text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold text-[#da8d43] mb-4">Pfingstturnier 2026</h1>
+          <h1 className="text-5xl font-bold text-[#ff6600] mb-4">Pfingstturnier 2026</h1>
           <p className="text-xl">Sportunion Rudmanns</p>
         </div>
       </section>
@@ -53,19 +53,19 @@ export default function Pfingstturnier() {
           <h2 className="text-3xl font-bold mb-8">Countdown bis zum Turnier</h2>
           <div className="flex justify-center gap-4 md:gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md min-w-[100px]">
-              <p className="text-4xl font-bold text-[#da8d43]">{countdown.days}</p>
+              <p className="text-4xl font-bold text-[#ff6600]">{countdown.days}</p>
               <p className="text-gray-600">Tage</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md min-w-[100px]">
-              <p className="text-4xl font-bold text-[#da8d43]">{countdown.hours}</p>
+              <p className="text-4xl font-bold text-[#ff6600]">{countdown.hours}</p>
               <p className="text-gray-600">Stunden</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md min-w-[100px]">
-              <p className="text-4xl font-bold text-[#da8d43]">{countdown.minutes}</p>
+              <p className="text-4xl font-bold text-[#ff6600]">{countdown.minutes}</p>
               <p className="text-gray-600">Minuten</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md min-w-[100px]">
-              <p className="text-4xl font-bold text-[#da8d43]">{countdown.seconds}</p>
+              <p className="text-4xl font-bold text-[#ff6600]">{countdown.seconds}</p>
               <p className="text-gray-600">Sekunden</p>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default function Pfingstturnier() {
                 <input 
                   type="text" 
                   required
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#da8d43]"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
                   value={formData.teamname}
                   onChange={(e) => setFormData({...formData, teamname: e.target.value})}
                 />
@@ -119,7 +119,7 @@ export default function Pfingstturnier() {
                 <input 
                   type="email" 
                   required
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#da8d43]"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                 />
@@ -129,7 +129,7 @@ export default function Pfingstturnier() {
                 <label className="block text-gray-700 font-bold mb-2">Telefon</label>
                 <input 
                   type="tel"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#da8d43]"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                 />
@@ -138,7 +138,7 @@ export default function Pfingstturnier() {
               <div className="mb-4">
                 <label className="block text-gray-700 font-bold mb-2">Nachricht</label>
                 <textarea 
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#da8d43]"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
                   rows="4"
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -147,7 +147,7 @@ export default function Pfingstturnier() {
               
               <button 
                 type="submit"
-                className="w-full bg-[#da8d43] text-white font-bold py-3 rounded-lg hover:bg-orange-600"
+                className="w-full bg-[#ff6600] text-white font-bold py-3 rounded-lg hover:bg-orange-600"
               >
                 Anmeldung absenden
               </button>

@@ -31,7 +31,7 @@ export default async function Home() {
       <section className="py-12 container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="p-6 border rounded-lg bg-white shadow-sm">
-            <h3 className="text-xl font-bold text-[#da8d43] mb-4">Nächstes Spiel</h3>
+            <h3 className="text-xl font-bold text-[#ff6600] mb-4">Nächstes Spiel</h3>
             {upcomingGames.length > 0 ? (
               <div>
                 <p className="font-bold">{getAttributes(upcomingGames[0]).opponent}</p>
@@ -41,23 +41,23 @@ export default async function Home() {
                 <p className="text-sm text-gray-500">{getAttributes(upcomingGames[0]).location}</p>
               </div>
             ) : (<p>Keine Spiele geplant</p>)}
-            <Link href="/spielplan" className="text-[#da8d43] hover:underline mt-2 inline-block">Zum Spielplan →</Link>
+            <Link href="/spielplan" className="text-[#ff6600] hover:underline mt-2 inline-block">Zum Spielplan →</Link>
           </div>
 
           <div className="p-6 border rounded-lg bg-white shadow-sm">
-            <h3 className="text-xl font-bold text-[#da8d43] mb-4">Aktuelle News</h3>
+            <h3 className="text-xl font-bold text-[#ff6600] mb-4">Aktuelle News</h3>
             {latestNews.length > 0 ? (
               <div>
                 <p className="font-bold">{getAttributes(latestNews[0]).title}</p>
-                <Link href="/news" className="text-[#da8d43] hover:underline mt-2 inline-block">Alle News →</Link>
+                <Link href="/news" className="text-[#ff6600] hover:underline mt-2 inline-block">Alle News →</Link>
               </div>
             ) : (<p>Keine News vorhanden</p>)}
           </div>
 
           <div className="p-6 border rounded-lg bg-white shadow-sm">
-            <h3 className="text-xl font-bold text-[#da8d43] mb-4">Sponsoren</h3>
+            <h3 className="text-xl font-bold text-[#ff6600] mb-4">Sponsoren</h3>
             <p className="text-gray-600 mb-2">{sponsorList.length} Sponsoren</p>
-            <Link href="/sponsoren" className="text-[#da8d43] hover:underline">Unsere Sponsoren →</Link>
+            <Link href="/sponsoren" className="text-[#ff6600] hover:underline">Unsere Sponsoren →</Link>
           </div>
         </div>
       </section>
@@ -77,13 +77,13 @@ export default async function Home() {
                     <div className="w-20 h-20 rounded-full mx-auto mb-2 bg-gray-200 flex items-center justify-center"><span className="text-2xl">⚽</span></div>
                   )}
                   <p className="font-bold text-sm">{attrs.name}</p>
-                  <p className="text-[#da8d43] text-sm">#{attrs.number || '-'}</p>
+                  <p className="text-[#ff6600] text-sm">#{attrs.number || '-'}</p>
                 </div>
               )
             })}
           </div>
           <div className="text-center mt-8">
-            <Link href="/mannschaft" className="bg-[#da8d43] text-white px-6 py-3 rounded-lg hover:bg-orange-600 inline-block">Ganzer Kader →</Link>
+            <Link href="/mannschaft" className="bg-[#ff6600] text-white px-6 py-3 rounded-lg hover:bg-orange-600 inline-block">Ganzer Kader →</Link>
           </div>
         </div>
       </section>
@@ -92,7 +92,7 @@ export default async function Home() {
         <h2 className="text-3xl font-bold text-center mb-8">Über uns</h2>
         <div className="max-w-2xl mx-auto text-center">
           <p className="mb-4">Der Sportunion Rudmanns wurde 1988 gegründet und hat seine Heimat im Birkenstadion in Stift Zwettl.</p>
-          <p className="mb-4 font-bold text-[#da8d43]">Pokalsieg 2024 - unser größter Erfolg!</p>
+          <p className="mb-4 font-bold text-[#ff6600]">Pokalsieg 2024 - unser größter Erfolg!</p>
         </div>
       </section>
     </div>

@@ -37,7 +37,7 @@ export default async function Mannschaf() {
                 <img 
                   src={imgUrl}
                   alt={attrs.name}
-                  className="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-4 border-[#da8d43]"
+                  className="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-4 border-[#ff6600]"
                 />
               ) : (
                 <div className="w-24 h-24 rounded-full mx-auto mb-3 bg-gray-200 flex items-center justify-center border-4 border-gray-300">
@@ -45,7 +45,7 @@ export default async function Mannschaf() {
                 </div>
               )}
               <p className="font-bold text-lg">{attrs.name}</p>
-              <p className="text-[#da8d43] font-bold text-xl">#{attrs.number || '-'}</p>
+              <p className="text-[#ff6600] font-bold text-xl">#{attrs.number || '-'}</p>
               <p className="text-gray-500 text-sm">{attrs.position}</p>
             </div>
           )

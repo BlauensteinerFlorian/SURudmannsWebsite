@@ -5,7 +5,7 @@ export default function Kontakt() {
       
       <div className="max-w-2xl mx-auto">
         <div className="bg-white p-6 rounded-lg shadow-md border">
-          <h2 className="text-2xl font-bold mb-4 text-[#da8d43]">Kontaktieren Sie uns</h2>
+          <h2 className="text-2xl font-bold mb-4 text-[#ff6600]">Kontaktieren Sie uns</h2>
           
           <div className="mb-6">
             <h3 className="font-bold mb-2"> Anschrift</h3>
@@ -15,7 +15,7 @@ export default function Kontakt() {
           
           <div className="mb-6">
             <h3 className="font-bold mb-2"> E-Mail</h3>
-            <a href="mailto:info@surudmanns.at" className="text-[#da8d43] hover:underline">
+            <a href="mailto:info@surudmanns.at" className="text-[#ff6600] hover:underline">
               info@surudmanns.at
             </a>
           </div>
@@ -23,7 +23,7 @@ export default function Kontakt() {
           <div>
             <h3 className="font-bold mb-2"> Ansprechpartner</h3>
             <p className="text-gray-600">Walter Blauensteiner (Obmann)</p>
-            <a href="mailto:obmann@surudmanns.at" className="text-[#da8d43] hover:underline">
+            <a href="mailto:obmann@surudmanns.at" className="text-[#ff6600] hover:underline">
               obmann@surudmanns.at
             </a>
           </div>

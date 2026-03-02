@@ -41,7 +41,7 @@ export default function HeroSlider() {
                 description: "Das größte Turnier der Region",
                 cta: "Jetzt anmelden",
                 ctaLink: "/pfingstturnier",
-                bgColor: "#da8d43"
+                bgColor: "#ff6600"
               }
             }
           ])

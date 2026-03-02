@@ -28,7 +28,7 @@ export default async function Sponsoren() {
         <p className="text-center text-gray-600">Keine Sponsoren vorhanden</p>
       ) : (
         <div>
-          <h2 className="text-2xl font-bold text-center mb-6 text-[#da8d43]">Hauptsponsoren</h2>
+          <h2 className="text-2xl font-bold text-center mb-6 text-[#ff6600]">Hauptsponsoren</h2>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {allSponsors.filter(s => getAttributes(s).category === 'Hauptsponsor').map((sponsor) => {
               const attrs = getAttributes(sponsor)
@@ -38,7 +38,7 @@ export default async function Sponsoren() {
                   {imgUrl && <img src={imgUrl} alt={attrs.name} className="h-24 mx-auto mb-4 object-contain" />}
                   <p className="font-bold text-lg">{attrs.name}</p>
                   {attrs.website && (
-                    <a href={attrs.website} target="_blank" rel="noopener noreferrer" className="text-[#da8d43] hover:underline">Website →</a>
+                    <a href={attrs.website} target="_blank" rel="noopener noreferrer" className="text-[#ff6600] hover:underline">Website →</a>
                   )}
                 </div>
               )

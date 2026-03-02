@@ -46,7 +46,7 @@ export default function Events() {
       {/* Hero */}
       <section className="bg-[#1a1a18] text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold text-[#da8d43] mb-4">Events</h1>
+          <h1 className="text-5xl font-bold text-[#ff6600] mb-4">Events</h1>
           <p className="text-xl">Veranstaltungen bei SU Rudmanns</p>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default function Events() {
                     />
                   )}
                   <div className="p-4">
-                    <p className="text-[#da8d43] font-bold mb-2">
+                    <p className="text-[#ff6600] font-bold mb-2">
                       {attrs.date ? formatDate(attrs.date) : 'Datum offen'}
                     </p>
                     <h3 className="text-xl font-bold mb-2">{attrs.title}</h3>

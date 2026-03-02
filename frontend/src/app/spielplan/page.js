@@ -50,7 +50,7 @@ export default async function Spielplan() {
                   <div className="text-right">
                     <p className="text-gray-500 text-sm">{attrs.league}</p>
                     {attrs.result && (
-                      <p className="font-bold text-xl text-[#da8d43]">
+                      <p className="font-bold text-xl text-[#ff6600]">
                         {attrs.result}
                       </p>
                     )}

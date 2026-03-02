@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="de">
       <body className="min-h-screen flex flex-col bg-white">
         {/* Header */}
-        <header className="bg-[#da8d43] text-white sticky top-0 z-50">
+        <header className="bg-[#ff6600] text-white sticky top-0 z-50">
           <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold text-white">SU Rudmanns</Link>
             <ul className="flex gap-4 md:gap-6 text-sm md:text-base">
@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
         <SponsorsSection />
         
         {/* Footer */}
-        <footer className="bg-[#da8d43] text-white py-8">
+        <footer className="bg-[#ff6600] text-white py-8">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-8">
               {/* Social Media */}
