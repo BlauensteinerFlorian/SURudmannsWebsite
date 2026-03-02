@@ -74,7 +74,7 @@ export default async function Home() {
                   {imgUrl ? (
                     <img src={imgUrl} alt={attrs.name} className="w-full h-32  object-cover" />
                   ) : (
-                    <div className="w-full h-32  bg-gray-200 flex items-center justify-center"><span className="text-2xl">⚽</span></div>
+                    <div className="w-full aspect-square bg-gray-200 flex items-center justify-center rounded-t-lg"><span className="text-2xl">⚽</span></div>
                   )}
                   <p className="font-bold text-sm">{attrs.name}</p>
                   <p className="text-[#ff6600] text-sm">#{attrs.number || '-'}</p>
