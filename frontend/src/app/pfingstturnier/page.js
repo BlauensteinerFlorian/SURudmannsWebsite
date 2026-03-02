@@ -177,7 +177,7 @@ export default function Pfingstturnier() {
                   type="submit"
                   className="w-full bg-[#ff6600] text-white font-bold py-3 rounded-lg hover:bg-orange-600"
                 >
-                  Anmeldung absenden
+                  Anmeldung absenden 🤝
                 </button>
               </form>
             )}
