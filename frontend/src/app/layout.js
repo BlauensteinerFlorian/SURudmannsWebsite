@@ -58,8 +58,8 @@ export default function RootLayout({ children }) {
                     className="h-14 w-auto transition-transform group-hover:scale-105"
                   />
                 )}
-                <div className="hidden sm:block">
-                  <span className="text-2xl font-extrabold text-white tracking-wide">SU RUDMANNS" title="Zur Startseite"</span>
+                <div className="hidden sm:block hover:text-black/80 transition">
+                  <span className="text-2xl font-extrabold text-white tracking-wide">SU RUDMANNS" </span>
                   <p className="text-xs text-white/80 -mt-1">Stift Zwettl</p>
                 </div>
               </Link>
