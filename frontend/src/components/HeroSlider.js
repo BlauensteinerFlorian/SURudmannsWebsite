@@ -139,7 +139,7 @@ function getSlideImage(slide) {
                 {attrs.cta && (
                   <Link
                     href={attrs.ctaLink || '/'}
-                    className="inline-block bg-white text-[#1a1a18] px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition"
+                    className="inline-block bg-[#ff6600] text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-[#ff6600] transition"
                   >
                     {attrs.cta}
                   </Link>

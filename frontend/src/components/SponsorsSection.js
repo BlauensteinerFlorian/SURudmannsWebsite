@@ -23,31 +23,53 @@ export default function SponsorsSection() {
   if (!sponsors.length) return null
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-8 bg-[#0a0a0a]">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Unsere Sponsoren</h2>
-        <div className="flex flex-wrap justify-center items-center gap-8">
-          {sponsors.map((sponsor) => {
-            const attrs = sponsor.attributes || sponsor
-            const logo = attrs.logo?.data?.attributes || attrs.logo?.data
-            const logoUrl = logo ? `http://localhost:1337${logo.url}` : null
-            
-            return (
-              <div key={sponsor.id} className="flex items-center justify-center h-20">
-                {logoUrl ? (
-                  <img 
-                    src={logoUrl} 
-                    alt={attrs.name || 'Sponsor'} 
-                    className="max-h-16 max-w-32 object-contain"
-                  />
-                ) : (
-                  <span className="text-lg font-bold text-gray-600">{attrs.name}</span>
-                )}
-              </div>
-            )
-          })}
+        <div className="overflow-hidden">
+          <div className="flex animate-scroll gap-16">
+            {/* Double the sponsors for seamless loop */}
+            {[...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => {
+              const attrs = sponsor.attributes || sponsor
+              const logo = attrs.logo?.data?.attributes || attrs.logo?.data
+              const logoUrl = logo ? `http://localhost:1337${logo.url}` : null
+              
+              return (
+                <div 
+                  key={`${sponsor.id}-${index}`} 
+                  className="flex-shrink-0 flex items-center justify-center h-20 w-40"
+                >
+                  {logoUrl ? (
+                    <img 
+                      src={logoUrl} 
+                      alt={attrs.name || 'Sponsor'} 
+                      className="max-h-16 max-w-36 object-contain"
+                    />
+                  ) : (
+                    <span className="text-lg font-bold text-gray-400">{attrs.name}</span>
+                  )}
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.33%);
+          }
+        }
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+        }
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   )
 }
