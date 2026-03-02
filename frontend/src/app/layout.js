@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
   }, [])
 
   const navItems = [
-    { href: '/', label: 'Home' },
+    
     { href: '/mannschaft', label: 'Mannschaft' },
     { href: '/spielplan', label: 'Spielplan' },
     { href: '/pfingstturnier', label: 'Pfingstturnier' },
@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
                   />
                 )}
                 <div className="hidden sm:block">
-                  <span className="text-2xl font-extrabold text-white tracking-wide">SU RUDMANNS</span>
+                  <span className="text-2xl font-extrabold text-white tracking-wide">SU RUDMANNS" title="Zur Startseite"</span>
                   <p className="text-xs text-white/80 -mt-1">Stift Zwettl</p>
                 </div>
               </Link>
