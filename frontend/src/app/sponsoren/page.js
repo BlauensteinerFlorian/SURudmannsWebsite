@@ -21,7 +21,7 @@ export default async function Sponsoren() {
   })
 
   return (
-    <div className="container mx-auto px-6 max-w-5xl py-8">
+    <div className="container mx-auto px-6 max-w-6xl py-8">
       <h1 className="text-4xl font-bold text-center text-[#ff6600] mb-8">Unsere Sponsoren</h1>
       
       {allSponsors.length === 0 ? (
