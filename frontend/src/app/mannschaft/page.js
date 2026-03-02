@@ -32,7 +32,7 @@ export default async function Mannschaf() {
           const attrs = getAttributes(player)
           const imgUrl = getImageUrl(player)
           return (
-            <div key={player.id} className="text-center p-4 bg-white rounded-lg shadow-md border">
+            <div key={player.id} className="text-center bg-white rounded-lg shadow-md border">
               {imgUrl ? (
                 <img 
                   src={imgUrl}

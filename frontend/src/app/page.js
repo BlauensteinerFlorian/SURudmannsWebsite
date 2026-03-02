@@ -70,7 +70,7 @@ export default async function Home() {
               const attrs = getAttributes(player)
               const imgUrl = getImageUrl(player)
               return (
-                <div key={player.id} className="text-center p-4 bg-white rounded-lg shadow-sm">
+                <div key={player.id} className="text-center bg-white rounded-lg shadow-sm">
                   {imgUrl ? (
                     <img src={imgUrl} alt={attrs.name} className="w-full h-32  object-cover" />
                   ) : (
