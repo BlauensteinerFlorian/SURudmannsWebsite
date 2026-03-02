@@ -38,7 +38,7 @@ export async function fetchAPI(endpoint, options = {}) {
  * Get all players
  */
 export async function getPlayers() {
-  return fetchAPI('/api/players?populate=*')
+  return fetchAPI('/api/players?populate=*&pagination[pageSize]=100')
 }
 
 /**
