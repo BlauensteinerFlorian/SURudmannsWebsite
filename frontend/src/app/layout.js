@@ -52,7 +52,15 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
               
-              {/* Map - Embedded */}
+              {/* Impressum */}
+              <div>
+                <h3 className="font-bold mb-4">Rechtliches</h3>
+                <Link href="/impressum" className="hover:text-black underline">
+                  Impressum
+                </Link>
+              </div>
+              
+              {/* Map - Embedded (rechts) */}
               <div>
                 <h3 className="font-bold mb-4">Standort</h3>
                 <iframe 
@@ -73,14 +81,6 @@ export default function RootLayout({ children }) {
                 >
                   Größere Karte ansehen
                 </a>
-              </div>
-              
-              {/* Impressum */}
-              <div>
-                <h3 className="font-bold mb-4">Rechtliches</h3>
-                <Link href="/impressum" className="hover:text-black underline">
-                  Impressum
-                </Link>
               </div>
             </div>
             <div className="text-center mt-8 pt-8 border-t border-orange-400">
