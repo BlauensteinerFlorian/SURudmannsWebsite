@@ -80,7 +80,7 @@ export default async function Mannschaf() {
             <img 
               src={teamImageUrl} 
               alt="Mannschaftsbild" 
-              className="w-full max-h-[500px] object-contain rounded-lg"
+              className="w-full max-h-[400px] object-cover rounded-lg"
             />
           </div>
         </section>
@@ -89,7 +89,7 @@ export default async function Mannschaf() {
       {/* Spieler */}
       <section className="py-8">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-center mb-8">Unsere Spieler</h1>
+          <h1 className="text-4xl font-bold text-center mb-8">Unsere Spieler</h1>
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
             {allPlayers.map((player) => {
@@ -99,7 +99,7 @@ export default async function Mannschaf() {
                 <div 
                   key={player.id} 
                   className="text-center bg-white rounded-lg shadow-md"
-                  style={{ boxShadow: '0 0 15px rgba(255, 102, 0, 0.15)' }}
+                  style={{ boxShadow: "0 0 25px rgba(255, 102, 0, 0.3)"' }}
                 >
                   {imgUrl ? (
                     <img 
