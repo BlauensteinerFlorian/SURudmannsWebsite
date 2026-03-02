@@ -22,7 +22,7 @@ export default async function Sponsoren() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-8">Unsere Sponsoren</h1>
+      <h1 className="text-4xl font-bold text-center text-[#ff6600] mb-8">Unsere Sponsoren</h1>
       
       {allSponsors.length === 0 ? (
         <p className="text-center text-gray-600">Keine Sponsoren vorhanden</p>

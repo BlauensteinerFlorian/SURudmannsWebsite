@@ -53,7 +53,7 @@ export default function Events() {
 
       {/* Events Liste */}
       <section className="py-12 container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Kommende Veranstaltungen</h2>
+        <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Kommende Veranstaltungen</h2>
         
         {events.length === 0 ? (
           <p className="text-center text-gray-600">Keine Events geplant.</p>

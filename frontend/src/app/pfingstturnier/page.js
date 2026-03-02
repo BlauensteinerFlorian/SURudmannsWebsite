@@ -75,7 +75,7 @@ export default function Pfingstturnier() {
       {/* Turnier Info */}
       <section className="py-12 container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8">Über das Turnier</h2>
+          <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Über das Turnier</h2>
           <div className="prose mx-auto">
             <p className="text-lg text-gray-700 mb-4">
               Das traditionelle Pfingstturnier der SU Rudmanns findet jährlich am Pfingstsonntag statt.
@@ -94,7 +94,7 @@ export default function Pfingstturnier() {
       {/* Anmeldung */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Anmeldung</h2>
+          <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Anmeldung</h2>
           
           {submitted ? (
             <div className="max-w-md mx-auto bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">

@@ -69,7 +69,7 @@ export default async function Mannschaf() {
       {/* Überschrift */}
       <section className="py-8">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center">Unsere Mannschaft</h1>
+          <h1 className="text-4xl font-bold text-center text-[#ff6600]">Unsere Mannschaft</h1>
         </div>
       </section>
 
@@ -89,7 +89,7 @@ export default async function Mannschaf() {
       {/* Spieler */}
       <section className="py-8">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-8">Unsere Spieler</h1>
+          <h1 className="text-4xl font-bold text-center text-[#ff6600] mb-8">Unsere Spieler</h1>
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
             {allPlayers.map((player) => {
