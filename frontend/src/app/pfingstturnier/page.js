@@ -36,11 +36,25 @@ export default function Pfingstturnier() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Anmeldung:', formData)
-    setSubmitted(true)
-    // Hier würde eine E-Mail versendet werden an: info@surudmanns.at
+    
+    try {
+      const res = await fetch('/api/anmeldung', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        alert('Fehler beim Senden. Bitte später erneut versuchen.')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert('Fehler beim Senden. Bitte später erneut versuchen.')
+    }
   }
 
   return (
@@ -83,13 +97,13 @@ export default function Pfingstturnier() {
             <div className="prose">
               <p className="text-lg text-gray-700 mb-4">
                 Das traditionelle Pfingstturnier der SU Rudmanns findet jährlich am Pfingstsonntag statt.
-                Teams aus der ganzen Region treffen sich im Birkenstadion Stift Zwettl.
+                Teams aus der ganzen Region treffen sich am Fußballplatz in Rudmanns.
               </p>
               <ul className="list-disc pl-6 mb-4 text-gray-700">
-                <li>Beginn: 14:00 Uhr</li>
-                <li>Modus: Joker-Turnier</li>
-                <li>Startgeld: €50,- pro Team</li>
-                <li>Für Speis und Trank ist bestgesorgt!</li>
+                <li>⏰ Beginn: 10:00 Uhr</li>
+                <li>⚽ Modus: Gruppenphase mit anschließenden Kreuzspielen</li>
+                <li>💰 Startgeld: €50,- pro Team (als Getränkegutscheine rückerstattet)</li>
+                <li>🍔 Für Speis und Trank ist bestgesorgt!</li>
               </ul>
             </div>
           </div>
