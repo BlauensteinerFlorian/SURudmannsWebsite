@@ -49,6 +49,8 @@ export default async function Home() {
     <div>
       <HeroSlider />
 
+      <div className="p-6 border shadow-sm">
+
       {/* Über uns Section - from CMS */}
       <section className="pt-12 pb-0 bg-[#0a0a0a]">
         <div className="container mx-auto px-4">

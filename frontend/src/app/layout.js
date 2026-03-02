@@ -63,7 +63,7 @@ export default function RootLayout({ children }) {
                   <Link 
                     key={item.href} 
                     href={item.href} 
-                    className="text-white font-medium hover:text-black transition text-sm"
+                    className="text-white font-bold uppercase hover:text-black transition text-base"
                   >
                     {item.label}
                   </Link>
