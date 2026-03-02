@@ -39,26 +39,26 @@ export default function Pfingstturnier() {
   return (
     <div>
       {/* Hero Section with Countdown */}
-      <section className="bg-[#1a1a18] text-white py-12">
+      <section className="bg-[#1a1a18] text-white py-8">
         <div className="container mx-auto px-6 max-w-7xl text-center">
           <h1 className="text-5xl font-bold text-[#ff6600] mb-2">Pfingstturnier 2026</h1>
           <p className="text-xl mb-8">Sportunion Rudmanns</p>
           
           {/* Countdown inline */}
-          <div className="flex justify-center gap-4 md:gap-6 mt-8">
-            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[70px]">
+          <div className="flex justify-center gap-2 md:gap-4 mt-8">
+            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[100px]">
               <p className="text-3xl font-bold">{countdown.days}</p>
               <p className="text-sm">Tage</p>
             </div>
-            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[70px]">
+            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[100px]">
               <p className="text-3xl font-bold">{countdown.hours}</p>
               <p className="text-sm">Stunden</p>
             </div>
-            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[70px]">
+            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[100px]">
               <p className="text-3xl font-bold">{countdown.minutes}</p>
               <p className="text-sm">Min</p>
             </div>
-            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[70px]">
+            <div className="bg-[#ff6600] p-4 rounded-lg min-w-[100px]">
               <p className="text-3xl font-bold">{countdown.seconds}</p>
               <p className="text-sm">Sek</p>
             </div>
@@ -67,7 +67,7 @@ export default function Pfingstturnier() {
       </section>
 
       {/* Turnier Info */}
-      <section className="py-12 container mx-auto px-6 max-w-7xl">
+      <section className="py-8 container mx-auto px-6 max-w-7xl">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Über das Turnier</h2>
           <div className="prose mx-auto">
@@ -86,7 +86,7 @@ export default function Pfingstturnier() {
       </section>
 
       {/* Anmeldung */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-8 bg-gray-50">
         <div className="container mx-auto px-6 max-w-7xl">
           <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Anmeldung</h2>
           
