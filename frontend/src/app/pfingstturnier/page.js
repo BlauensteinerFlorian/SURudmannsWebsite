@@ -41,7 +41,7 @@ export default function Pfingstturnier() {
     <div>
       {/* Hero Section */}
       <section className="bg-[#1a1a18] text-white py-20">
-        <div className="container mx-auto max-w-[80%] px-6 text-center">
+        <div className="container mx-auto px-6 text-center">
           <h1 className="text-5xl font-bold text-[#ff6600] mb-4">Pfingstturnier 2026</h1>
           <p className="text-xl">Sportunion Rudmanns</p>
         </div>
@@ -49,7 +49,7 @@ export default function Pfingstturnier() {
 
       {/* Countdown */}
       <section className="py-16 bg-gray-100">
-        <div className="container mx-auto max-w-[80%] px-6 text-center">
+        <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-8">Countdown bis zum Turnier</h2>
           <div className="flex justify-center gap-4 md:gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md min-w-[100px]">
@@ -73,7 +73,7 @@ export default function Pfingstturnier() {
       </section>
 
       {/* Turnier Info */}
-      <section className="py-12 container mx-auto max-w-[80%] px-6">
+      <section className="py-12 container mx-auto px-6">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Über das Turnier</h2>
           <div className="prose mx-auto">
@@ -93,7 +93,7 @@ export default function Pfingstturnier() {
 
       {/* Anmeldung */}
       <section className="py-12 bg-gray-50">
-        <div className="container mx-auto max-w-[80%] px-6">
+        <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">Anmeldung</h2>
           
           {submitted ? (
