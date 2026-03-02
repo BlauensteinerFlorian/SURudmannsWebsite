@@ -8,12 +8,13 @@ import SponsorsSection from '@/components/SponsorsSection'
 // Fetch logo
 async function getLogo() {
   try {
-    const res = await fetch('http://localhost:1337/api/logo?populate=image', { cache: 'no-store' })
+    const res = await fetch('http://localhost:1337/api/logo?populate=image')
     const data = await res.json()
-    if (data.data) {
-      const img = data.data.image?.data?.attributes || data.data.image?.data
-      if (img?.url) {
-        return `http://localhost:1337${img.url}`
+    if (data.data && data.data.image) {
+      // Handle both Strapi v4 and v5 formats
+      const img = data.data.image.data?.attributes || data.data.image.data || data.data.image
+      if (img && img.url) {
+        return 'http://localhost:1337' + img.url
       }
     }
   } catch (e) {
