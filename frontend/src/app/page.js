@@ -16,23 +16,38 @@ async function getAboutUs() {
   }
 }
 
+// Get home cards
+async function getHomeCards() {
+  try {
+    const res = await fetch('http://localhost:1337/api/home-cards', { cache: 'no-store' })
+    const data = await res.json()
+    return data.data || []
+  } catch (e) {
+    console.error('Error fetching home cards:', e)
+    return []
+  }
+}
+
 export default async function Home() {
   let games = { data: [] }
   let news = { data: [] }
   let sponsors = { data: [] }
   let aboutus = null
+  let homeCards = []
 
   try {
-    const [gamesData, newsData, sponsorsData, aboutusData] = await Promise.all([
+    const [gamesData, newsData, sponsorsData, aboutusData, hcData] = await Promise.all([
       getUpcomingGames(),
       getNews(),
       getSponsors(),
-      getAboutUs()
+      getAboutUs(),
+      getHomeCards()
     ])
     games = gamesData
     news = newsData
     sponsors = sponsorsData
     aboutus = aboutusData
+    homeCards = hcData
   } catch (error) {
     console.error('Error fetching data:', error)
   }
@@ -64,7 +79,22 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Content Cards */}
+      {/* Home Cards Grid */}
+      <section className="py-12 container mx-auto px-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {homeCards.map((card) => {
+            const attrs = card.attributes || card
+            return (
+              <div key={card.id} className="p-6 border rounded-lg bg-white shadow-sm text-center">
+                <h3 className="text-xl font-bold text-[#ff6600] mb-4">{attrs.title}</h3>
+                <p className="text-gray-600">{attrs.subtitle}</p>
+              </div>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* Legacy Content Cards (optional - keeping for now) */}
       <section className="py-12 container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="p-6 border rounded-lg bg-white shadow-sm">

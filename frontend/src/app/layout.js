@@ -49,11 +49,8 @@ export default function RootLayout({ children }) {
             <div className="flex items-center justify-between h-16">
               {/* Logo + Brand */}
               <Link href="/" className="flex items-center gap-3">
-                {logoUrl ? (
-                  <img src={logoUrl} alt="Logo" className="h-10 w-auto" />
-                ) : (
-                  <span className="text-xl font-bold text-white">SU Rudmanns</span>
-                )}
+                <img src={logoUrl} alt="Logo" className="h-10 w-auto" />
+                <span className="text-xl font-bold text-white">SU Rudmanns</span>
               </Link>
 
               {/* Desktop Navigation */}
