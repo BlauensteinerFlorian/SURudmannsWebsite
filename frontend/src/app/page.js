@@ -85,7 +85,7 @@ export default async function Home() {
           {homeCards.map((card) => {
             const attrs = card.attributes || card
             return (
-              <div key={card.id} className="p-6 border rounded-lg bg-white shadow-sm text-center">
+              <div key={card.id} className="p-6 border rounded-lg bg-white shadow-sm text-center flex flex-col justify-center min-h-[150px]">
                 <h3 className="text-2xl font-bold text-white min-h-[120px] mb-4">{attrs.title}</h3>
                 <p className="text-gray-600">{attrs.subtitle}</p>
               </div>
