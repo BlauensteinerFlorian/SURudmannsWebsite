@@ -50,7 +50,7 @@ export default async function Home() {
       <HeroSlider />
 
       {/* Über uns Section - from CMS */}
-      <section className="py-12 bg-[#0a0a0a]">
+      <section className="pt-12 pb-0 bg-[#0a0a0a]">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-[#ff6600] mb-8">{aboutTitle}</h2>
           <div className="max-w-2xl mx-auto text-center">
