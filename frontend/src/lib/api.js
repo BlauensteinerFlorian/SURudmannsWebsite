@@ -1,4 +1,4 @@
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://talented-respect-965e7b7ab0.strapiapp.com'
 
 /**
  * Fetch data from Strapi API
