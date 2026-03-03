@@ -63,7 +63,7 @@ export default async function Events() {
                     </p>
                     <h3 className="text-xl font-bold mb-2">{attrs.title}</h3>
                     <p className="text-gray-600 mb-3">
-                      {attrs.description?.
+                      {attrs.description}
                     </p>
                     {attrs.location && (
                       <p className="text-sm text-gray-500 flex items-center gap-1">
