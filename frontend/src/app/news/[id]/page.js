@@ -29,11 +29,13 @@ function getArticleImageUrl(attrs) {
 export default async function NewsDetail({ params }) {
   const { id } = params
   
-  // Fetch article by ID
+  // Fetch article by ID using filters (Strapi 5 doesn't support /api/articles/{id})
   let article = null
   try {
-    const data = await fetchAPI(`/api/articles/${id}`)
-    article = data.data
+    const data = await fetchAPI(`/api/articles?filters[id][$eq]=${id}&populate=*`)
+    if (data.data && data.data.length > 0) {
+      article = data.data[0]
+    }
   } catch (error) {
     console.error('Error fetching article:', error)
   }
@@ -90,7 +92,7 @@ export default async function NewsDetail({ params }) {
         
         <div className="prose max-w-none text-gray-700 text-lg leading-relaxed">
           {contentText.split('\n').map((paragraph, idx) => (
-            <p key={idx} className="mb-4">{paragraph}</p>
+            paragraph.trim() && <p key={idx} className="mb-4">{paragraph}</p>
           ))}
         </div>
       </article>
