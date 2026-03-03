@@ -1,39 +1,26 @@
-'use client'
+import { getEvents, getAttributes } from '@/lib/api'
 
-import { useEffect, useState } from 'react'
+export const revalidate = 60
 
-const STRAPI_URL = 'http://localhost:1337'
-
-export default function Events() {
-  const [events, setEvents] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    async function fetchEvents() {
-      try {
-        const res = await fetch(`${STRAPI_URL}/api/events?populate=image`)
-        const data = await res.json()
-        if (data.data) {
-          setEvents(data.data)
-        }
-      } catch (e) {
-        console.error('Events load error:', e)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchEvents()
-  }, [])
-
-  // Helper for Strapi 5 format (flat, no attributes wrapper)
-  const getAttr = (item) => item.attributes || item
-
-  // Helper for image URL
-  const getImageUrl = (item) => {
-    const attrs = getAttr(item)
-    const img = attrs.image?.data?.attributes || attrs.image?.data
-    return img ? `${STRAPI_URL}${img.url}` : null
+export default async function Events() {
+  let events = { data: [] }
+  
+  try {
+    events = await getEvents()
+  } catch (error) {
+    console.error('Error:', error)
   }
+
+  const allEvents = events.data || []
+  const now = new Date()
+
+  const upcomingEvents = allEvents
+    .filter(e => new Date(getAttributes(e).date) >= now)
+    .sort((a, b) => new Date(getAttributes(a).date) - new Date(getAttributes(b).date))
+  
+  const pastEvents = allEvents
+    .filter(e => new Date(getAttributes(e).date) < now)
+    .sort((a, b) => new Date(getAttributes(b).date) - new Date(getAttributes(a).date))
 
   const formatDate = (dateStr) => {
     if (!dateStr) return ''
@@ -45,14 +32,11 @@ export default function Events() {
     })
   }
 
-  // Separate upcoming and past events
-  const now = new Date()
-  const upcomingEvents = events
-    .filter(e => new Date(getAttr(e).date) >= now)
-    .sort((a, b) => new Date(getAttr(a).date) - new Date(getAttr(b).date))
-  const pastEvents = events
-    .filter(e => new Date(getAttr(e).date) < now)
-    .sort((a, b) => new Date(getAttr(b).date) - new Date(getAttr(a).date))
+  const getImageUrl = (item) => {
+    const attrs = getAttributes(item)
+    const img = attrs.image?.data?.attributes || attrs.image?.data
+    return img ? `http://localhost:1337${img.url}` : null
+  }
 
   return (
     <div>
@@ -68,14 +52,12 @@ export default function Events() {
       <section className="py-12 container mx-auto px-6 max-w-7xl">
         <h2 className="text-3xl font-bold text-[#ff6600] mb-8">Kommende Veranstaltungen</h2>
         
-        {loading ? (
-          <p className="text-center text-gray-600">Lädt...</p>
-        ) : upcomingEvents.length === 0 ? (
+        {upcomingEvents.length === 0 ? (
           <p className="text-center text-gray-600">Keine Events geplant.</p>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {upcomingEvents.map((event) => {
-              const attrs = getAttr(event)
+              const attrs = getAttributes(event)
               const imageUrl = getImageUrl(event)
               
               return (
@@ -116,7 +98,7 @@ export default function Events() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {pastEvents.map((event) => {
-                const attrs = getAttr(event)
+                const attrs = getAttributes(event)
                 const imageUrl = getImageUrl(event)
                 
                 return (
