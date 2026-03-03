@@ -9,26 +9,13 @@ export default function Fanshop() {
         </div>
       </section>
 
-      {/* Shop Link */}
-      <section className="py-12 container mx-auto px-6 max-w-7xl">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-lg text-gray-700 mb-8">
-            Der offizielle SU Rudmanns Fanshop befindet sich bei w4merch.
-          </p>
-          
-          <a 
-            href="https://www.w4merch.at/shop/su-rudmanns"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-[#ff6600] text-white font-bold py-4 px-8 rounded-lg hover:bg-orange-600 transition text-lg"
-          >
-            🛒 Zum Fanshop ↗
-          </a>
-
-          <p className="text-sm text-gray-500 mt-4">
-            (Öffnet in einem neuen Tab)
-          </p>
-        </div>
+      {/* Shop iframe - full width */}
+      <section className="py-0">
+        <iframe 
+          src="https://www.w4merch.at/shop/su-rudmanns/"
+          title="SU Rudmanns Fanshop"
+          className="w-full h-screen min-h-[900px] border-none"
+        />
       </section>
     </div>
   )
