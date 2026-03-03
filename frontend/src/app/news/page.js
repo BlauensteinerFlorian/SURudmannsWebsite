@@ -79,23 +79,22 @@ export default async function News() {
               return (
                 <Link href={`/news/${article.id}`} key={article.id}>
                   <div className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#ff6600] hover:shadow-xl transition cursor-pointer h-full">
-                  {imageUrl && (
-                    <img 
-                      src={imageUrl} 
-                      alt={attrs.title || 'News'} 
-                      className="w-full h-48 object-cover"
-                    />
-                  )}
-                  <div className="p-5">
-                    <p className="text-[#ff6600] font-bold mb-2 flex items-center gap-2">
-                      📅 {attrs.publishedAt ? formatDate(attrs.publishedAt) : ''}
-                    </p>
-                    <h3 className="text-xl font-bold mb-3">{attrs.title}</h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
-                      {contentText}
-                    </p>
-                  </div>
-                </div>
+                    {imageUrl && (
+                      <img 
+                        src={imageUrl} 
+                        alt={attrs.title || 'News'} 
+                        className="w-full h-48 object-cover"
+                      />
+                    )}
+                    <div className="p-5">
+                      <p className="text-[#ff6600] font-bold mb-2 flex items-center gap-2">
+                        📅 {attrs.publishedAt ? formatDate(attrs.publishedAt) : ''}
+                      </p>
+                      <h3 className="text-xl font-bold mb-3">{attrs.title}</h3>
+                      <p className="text-gray-600 mb-4 line-clamp-3">
+                        {contentText}
+                      </p>
+                    </div>
                   </div>
                 </Link>
               )
