@@ -54,7 +54,7 @@ export default async function Impressum() {
 
           <div className="mb-8">
             <h3 className="font-bold text-lg mb-2">Vereinsregister</h3>
-            <p className="text-gray-700">ZVR-Zahl: [Wird nachgetragen]</p>
+            <p className="text-gray-700">ZVR-Zahl: 466646468</p>
           </div>
 
           <div className="mb-8">
