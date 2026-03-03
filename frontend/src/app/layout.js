@@ -163,6 +163,14 @@ export default function RootLayout({ children }) {
                     /SURudmanns
                   </a>
                 </div>
+                
+                {/* Weitere Links */}
+                <div className="mt-6">
+                  <h3 className="font-bold text-lg mb-4">WEITERE LINKS</h3>
+                  <a href="http://www.hobbyliga-zwettl.at/tabelle-2" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:bg-white/20 hover:rounded-lg">
+                    📊 Zur Serie H Tabelle
+                  </a>
+                </div>
               </div>
               
               {/* Column 3: Map */}
