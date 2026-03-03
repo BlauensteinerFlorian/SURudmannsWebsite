@@ -191,9 +191,14 @@ export default function RootLayout({ children }) {
             {/* Bottom */}
             <div className="mt-10 pt-6 border-t border-white/30 flex flex-col md:flex-row justify-between items-center gap-4">
               <p>© 2026 SU Rudmanns / Stift Zwettl</p>
-              <Link href="/impressum" className="hover:bg-white/20 hover:rounded-lg">
-                Impressum
-              </Link>
+              <div className="flex gap-4">
+                <Link href="/datenschutz" className="hover:bg-white/20 hover:rounded-lg">
+                  Datenschutz
+                </Link>
+                <Link href="/impressum" className="hover:bg-white/20 hover:rounded-lg">
+                  Impressum
+                </Link>
+              </div>
             </div>
           </div>
         </footer>
