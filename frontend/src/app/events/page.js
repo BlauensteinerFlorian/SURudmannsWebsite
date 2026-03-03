@@ -32,13 +32,7 @@ export default async function Events() {
     })
   }
 
-  const getImageUrl = (item) => {
-    const attrs = getAttributes(item)
-    const img = attrs.image?.data?.attributes || attrs.image?.data
-    return img ? `http://localhost:1337${img.url}` : null
-  }
-
-  return (
+    return (
     <div>
       {/* Hero */}
       <section className="bg-[#1a1a18] text-white py-16">
@@ -58,17 +52,11 @@ export default async function Events() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {upcomingEvents.map((event) => {
               const attrs = getAttributes(event)
-              const imageUrl = getImageUrl(event)
+              
               
               return (
                 <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#ff6600]">
-                  {imageUrl && (
-                    <img 
-                      src={imageUrl} 
-                      alt={attrs.title || 'Event'} 
-                      className="w-full h-48 object-cover"
-                    />
-                  )}
+                  
                   <div className="p-5">
                     <p className="text-[#ff6600] font-bold mb-2 flex items-center gap-2">
                       📅 {attrs.date ? formatDate(attrs.date) : 'Datum offen'}
@@ -99,17 +87,10 @@ export default async function Events() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {pastEvents.map((event) => {
                 const attrs = getAttributes(event)
-                const imageUrl = getImageUrl(event)
+                
                 
                 return (
                   <div key={event.id} className="bg-gray-100 rounded-lg shadow-sm overflow-hidden opacity-70">
-                    {imageUrl && (
-                      <img 
-                        src={imageUrl} 
-                        alt={attrs.title || 'Event'} 
-                        className="w-full h-40 object-cover grayscale"
-                      />
-                    )}
                     <div className="p-4">
                       <p className="text-gray-500 text-sm mb-1">
                         {attrs.date ? formatDate(attrs.date) : ''}

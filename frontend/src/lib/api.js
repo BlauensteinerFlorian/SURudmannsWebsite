@@ -74,7 +74,7 @@ export async function getSponsors() {
  * Get all team members (Vorstand, Trainer)
  */
 export async function getEvents() {
-  return fetchAPI('/api/events?populate=image')
+  return fetchAPI('/api/events')
 }
 
 export async function getTeamMembers() {
