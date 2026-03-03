@@ -10,4 +10,9 @@ export default ({ env }) => ({
       secret: env('ADMIN_JWT_SECRET', 'super-secret-jwt-key-change-in-production'),
     },
   },
+  transfer: {
+    remote: {
+      enabled: true,
+    }
+  }
 })
