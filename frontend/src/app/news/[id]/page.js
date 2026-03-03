@@ -1,7 +1,22 @@
 import Link from 'next/link'
 import { fetchAPI, getAttributes } from '@/lib/api'
 
-const STRAPI_URL = 'http://localhost:1337'
+const STRAPI_URL = 'https://talented-respect-965e7b7ab0.strapiapp.com'
+
+// Generate static params for all articles (for static export)
+export async function generateStaticParams() {
+  try {
+    const data = await fetchAPI('/api/articles?pagination[pageSize]=100')
+    if (data.data) {
+      return data.data.map((article) => ({
+        id: String(article.id),
+      }))
+    }
+  } catch (e) {
+    console.error('Error generating params:', e)
+  }
+  return []
+}
 
 // Helper to extract full text from content blocks
 function extractContentText(content) {
