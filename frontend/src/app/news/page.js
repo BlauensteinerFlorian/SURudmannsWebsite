@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { getNews, getAttributes } from '@/lib/api'
 
 export const revalidate = 60
@@ -76,7 +77,8 @@ export default async function News() {
               const contentText = extractContentText(attrs.content)
               
               return (
-                <div key={article.id} className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#ff6600]">
+                <Link href={`/news/${article.id}`} key={article.id}>
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#ff6600] hover:shadow-xl transition cursor-pointer h-full">
                   {imageUrl && (
                     <img 
                       src={imageUrl} 
@@ -94,6 +96,8 @@ export default async function News() {
                     </p>
                   </div>
                 </div>
+                  </div>
+                </Link>
               )
             })}
           </div>
