@@ -76,6 +76,12 @@ export default async function NewsDetail({ params }) {
 
       {/* Article */}
       <article className="container mx-auto px-6 max-w-4xl py-8">
+        <p className="text-[#ff6600] font-bold mb-2 flex items-center gap-2">
+          📅 {attrs.publishedAt ? formatDate(attrs.publishedAt) : ''}
+        </p>
+        
+        <h1 className="text-4xl font-bold mb-8">{attrs.title}</h1>
+        
         {imageUrl && (
           <img 
             src={imageUrl} 
@@ -83,12 +89,6 @@ export default async function NewsDetail({ params }) {
             className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
           />
         )}
-        
-        <p className="text-[#ff6600] font-bold mb-4 flex items-center gap-2">
-          📅 {attrs.publishedAt ? formatDate(attrs.publishedAt) : ''}
-        </p>
-        
-        <h1 className="text-4xl font-bold mb-6">{attrs.title}</h1>
         
         <div className="prose max-w-none text-gray-700 text-lg leading-relaxed">
           {contentText.split('\n').map((paragraph, idx) => (
