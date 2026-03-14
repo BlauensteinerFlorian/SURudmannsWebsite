@@ -8,7 +8,7 @@ export default function SponsorsSection() {
   useEffect(() => {
     async function fetchSponsors() {
       try {
-        const res = await fetch('http://localhost:1337/api/sponsors?populate=logo')
+        const res = await fetch('https://talented-respect-965e7b7ab0.strapiapp.com/api/sponsors?populate=logo')
         const data = await res.json()
         if (data.data) {
           setSponsors(data.data)
@@ -33,7 +33,8 @@ export default function SponsorsSection() {
               // Handle Strapi 5 flat format
               const attrs = sponsor.attributes || sponsor
               const logo = attrs.logo  // Direct object in Strapi 5
-              const logoUrl = logo?.url ? `http://localhost:1337${logo.url}` : null
+              const logoUrl = logo?.url ? logo.url : null
+              const website = attrs.website || null
               
               return (
                 <div 
@@ -41,11 +42,21 @@ export default function SponsorsSection() {
                   className="flex-shrink-0 flex items-center justify-center h-28 w-56"
                 >
                   {logoUrl ? (
-                    <img 
-                      src={logoUrl} 
-                      alt={attrs.name || 'Sponsor'} 
-                      className="max-h-24 max-w-48 object-contain"
-                    />
+                    website ? (
+                      <a href={website} target="_blank" rel="noopener noreferrer">
+                        <img 
+                          src={logoUrl} 
+                          alt={attrs.name || 'Sponsor'} 
+                          className="max-h-24 max-w-48 object-contain hover:opacity-80 transition-opacity"
+                        />
+                      </a>
+                    ) : (
+                      <img 
+                        src={logoUrl} 
+                        alt={attrs.name || 'Sponsor'} 
+                        className="max-h-24 max-w-48 object-contain"
+                      />
+                    )
                   ) : (
                     <span className="text-lg font-bold text-gray-400">{attrs.name}</span>
                   )}
